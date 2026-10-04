@@ -23,4 +23,3 @@ python Tools/verify_repository.py
 To regenerate intentionally: `python Tools/generate_protocol_fixtures.py`. Optional source provenance verification with an ignored pinned clone: `python Tools/generate_protocol_fixtures.py --check --verify-upstream .research/open-cfmoto`. Offline output checks need no clone or external packages. Tests validate artifact consistency, known bytes, distinct framing lengths, bodies, provenance and fragmented/coalesced reads; they do not prove native iOS compilation, RSA interoperability or bike behavior.
 
 See [research](../../docs/engineering/OPENCFMOTO_RESEARCH.md) and [candidate specification](../../docs/engineering/EASYCONNECT_PROTOCOL.md). Keep future real sanitized captures separate with device/firmware, capture method, timestamps, direction/ports, revision and redaction provenance.
-

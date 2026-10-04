@@ -25,4 +25,4 @@ Source: CFMoto_IOS_MVP_V1.md; iOS 27+, Swift/SwiftUI, physical iPhone, CFMoto 45
 
 Non-goals: CAN/OBD, telemetry/HUD, Apple CarPlay, input injection, handlebar controls, audio routing, extra motorcycle models, production App Store release, and legacy iOS support.
 
-Later implementation must replace each Pending cell with implementation path, named test, verification record, and introducing/merge SHA. Hardware criteria may not be substituted with simulator success.
+Core implementation/host tests were introduced by `7a377f0e06dee79c989609bdd87e0c1df868bf11`; [Gate 1 host evidence](verification/GATE_1_HOST.md) records its fresh-checkout results and limitations. Later implementation must replace each Pending cell with implementation path, named test, verification record, and introducing/merge SHA. Hardware criteria may not be substituted with simulator success.

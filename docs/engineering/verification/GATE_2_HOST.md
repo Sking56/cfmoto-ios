@@ -38,7 +38,7 @@ Independent ignored evidence was preserved in the primary checkout as `build/gat
 
 ## Integration Checkpoint
 
-The reviewed source is unchanged after `603be12`; subsequent commits record evidence/status only. The branch is approved for merge to local `main`. The local annotated `mvp-gate-2` checkpoint is created only after the final documentation/integration revision passes its own clean portable/host/native checks. Gate 1 history/tag remains unchanged. No branch, tag or CI run is uploaded by this session. Exact merge/checkpoint identifiers are recorded in [STATUS](../STATUS.md) and the tag annotation once complete.
+The reviewed source is unchanged after `603be12`; subsequent commits record evidence/status only. Evidence was committed at `d9135e1` and the branch merged without conflicts to local `main` at `44190bfc149bda862e86e941948d19e5ad8b4072`. The final follow-up records that merge and changes documentation only. The local annotated `mvp-gate-2` checkpoint is created only after the exact final documentation/integration revision passes its own clean portable/host/native checks. Its annotation records the checkpoint SHA/results and source-review SHA. Gate 1 history/tag remains unchanged. No branch, tag or CI run is uploaded by this session.
 
 ## Limits
 

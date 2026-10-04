@@ -15,8 +15,9 @@ class RepositoryValidationTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
-        for name in ["docs", "OpenCFMoto", "OpenCFMotoUITests", "OpenCFMoto.xcodeproj", "Tests/Fixtures", "Tools/DashSimulator", ".github"]:
-            shutil.copytree(ROOT / name, self.root / name)
+        # Research documents link to their portable generators/tests as well as fixtures.
+        for name in ["docs", "OpenCFMoto", "OpenCFMotoUITests", "OpenCFMoto.xcodeproj", "Tests", "Tools", ".github"]:
+            shutil.copytree(ROOT / name, self.root / name, ignore=shutil.ignore_patterns("__pycache__"))
         for name in ["CFMoto_IOS_MVP_V1.md", "README.md", "CONTRIBUTING.md", "LICENSE", ".gitignore", "CHANGELOG.md"]:
             shutil.copy2(ROOT / name, self.root / name)
 

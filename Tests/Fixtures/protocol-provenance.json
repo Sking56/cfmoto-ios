@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "upstream_repository": "https://github.com/zanderp/open-cfmoto",
+  "upstream_revision": "0abbe2a70119d6dd46ac6b8a0715ff267fcdb316",
+  "research_date": "2026-10-04",
+  "sources": {
+    "S1": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/QrData.kt",
+      "sha256_git_blob": "28d58b68cff72261ec177cc54a1c4bc2a7320a665db0896d3b35c5040d678729",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/QrData.kt"
+    },
+    "S2": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/EasyConnDiscovery.kt",
+      "sha256_git_blob": "c535aef7c0ce50da0238015b4a7024199ea3381c95346b1cd2ae68fd8e56c187",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/EasyConnDiscovery.kt"
+    },
+    "S3": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/EasyConnProber.kt",
+      "sha256_git_blob": "4170c418ce354d8e95d94fe0d69a9b8cafdb4b4bcdc03aba671548f1cd095229",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/EasyConnProber.kt"
+    },
+    "S4": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/PxcFrame.kt",
+      "sha256_git_blob": "d7c7a7c17ef0518c947fa70a30a12be1b226003d9e5b9c3e36acaedf5679b462",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/PxcFrame.kt"
+    },
+    "S5": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/PxcHandshake.kt",
+      "sha256_git_blob": "74ba276ab3d7cf561e51945d99c5bb0f26e0ff0d5a89c017b35c629ae1501b95",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/PxcHandshake.kt"
+    },
+    "S6": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/BikeProfile.kt",
+      "sha256_git_blob": "295b2b201410945a12ad450286add2e928a61d033d0bb7d4d082a4d7db5cefe4",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/BikeProfile.kt"
+    },
+    "S7": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/RsaKeys.kt",
+      "sha256_git_blob": "ba90e38e0b396df0372192759b5687643a8e64de24fda6421e45c8ee5eb1eba0",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/RsaKeys.kt"
+    },
+    "S8": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/VideoPipeline.kt",
+      "sha256_git_blob": "67dff5b6fd4870c568dfd24419aef4528c45b6eed94e9e796fc008aaa70b4036",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/VideoPipeline.kt"
+    },
+    "S9": {
+      "path": "app/src/main/java/dev/zanderp/opencfmoto/AndroidAutoService.kt",
+      "sha256_git_blob": "96a52070b18e70b366881ac0c1c2828d1df7004f4d145a7a0f3d749166b1a845",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/app/src/main/java/dev/zanderp/opencfmoto/AndroidAutoService.kt"
+    },
+    "S10": {
+      "path": "docs/01-REVERSE-ENGINEERING.md",
+      "sha256_git_blob": "bb81fd25e653bd9255ad9860676696424898a313952f991ff4ec0eb7a7dbeacc",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/docs/01-REVERSE-ENGINEERING.md"
+    },
+    "S11": {
+      "path": "docs/05-DEBUG-KNOWLEDGE.md",
+      "sha256_git_blob": "5beefee1c77a1c63a7385a9a1f6cb6c9f8e1b9d6d7cd52fcda0f435d10e7c077",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/docs/05-DEBUG-KNOWLEDGE.md"
+    },
+    "S12": {
+      "path": "docs/SUPPORTED-BIKES.md",
+      "sha256_git_blob": "ce0aea3f1941bc56fc64bd3cf63943aa4d867190eb7fef11a0a06e33ec44a9b5",
+      "url": "https://github.com/zanderp/open-cfmoto/blob/0abbe2a70119d6dd46ac6b8a0715ff267fcdb316/docs/SUPPORTED-BIKES.md"
+    }
+  },
+  "generator": "Tools/generate_protocol_fixtures.py",
+  "method": "Independently constructed synthetic structural vectors from documented wire fields; no source implementation or captures copied",
+  "sanitization": "All SSID/password/MAC/HUID/serial values invented; no private keys, tokens, screen contents or genuine identifiers",
+  "limits": [
+    "No authenticated CLIENT_INFO response",
+    "Video markers are not decodable H.264",
+    "No target hardware or iPhone verification",
+    "Negative vectors impose research guards, not measured firmware maxima"
+  ]
+}

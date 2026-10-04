@@ -1,0 +1,34 @@
+{
+  "origin": "invented-synthetic",
+  "source": "S1",
+  "cases": [
+    {
+      "id": "classic",
+      "raw": "https://pairing.example.invalid/?modelid=SYNTHETIC&sn=SYNTHETIC-NONCE&action=9&ssid=CFMOTO-TEST-000001&pwd=fixture-only-0001&auth=wpa2-psk&mac=02:00:00:00:00:01&name=Synthetic%20Bike",
+      "expected": {
+        "ssid": "CFMOTO-TEST-000001",
+        "pwd": "fixture-only-0001",
+        "action": "9",
+        "name": "Synthetic Bike"
+      }
+    },
+    {
+      "id": "percent-plus-and-password-spaces",
+      "raw": "https://pairing.example.invalid/?SSID=CFMOTO%2BTEST&pwd=fixture+only%2B0002&action=1",
+      "expected": {
+        "ssid": "CFMOTO+TEST",
+        "pwd": "fixture only+0002",
+        "action": "1"
+      }
+    },
+    {
+      "id": "duplicate-and-fragment",
+      "raw": "https://pairing.example.invalid/?ssid=discarded&ssid=CFMOTO-TEST-000003&pwd=fixture-only-0003&action=1#pwd=ignored",
+      "expected": {
+        "ssid": "CFMOTO-TEST-000003",
+        "pwd": "fixture-only-0003",
+        "action": "1"
+      }
+    }
+  ]
+}

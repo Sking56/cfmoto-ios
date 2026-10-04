@@ -3,3 +3,9 @@
 *.jpg binary
 *.bin binary
 *.mp4 binary
+
+# Research generator compares exact bytes on Windows and macOS.
+Tests/Fixtures/**/*.bin binary
+Tests/Fixtures/protocol-manifest.json text eol=lf
+Tests/Fixtures/protocol-provenance.json text eol=lf
+Tests/Fixtures/qr/classic-cases.json text eol=lf

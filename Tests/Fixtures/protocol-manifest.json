@@ -1,0 +1,574 @@
+{
+  "schema_version": 1,
+  "upstream_revision": "0abbe2a70119d6dd46ac6b8a0715ff267fcdb316",
+  "origin": "invented-synthetic",
+  "qr_file": "qr/classic-cases.json",
+  "fixtures": [
+    {
+      "path": "handshake/wake-request.bin",
+      "sha256": "db86c6f72cd6a59223fae9fa1f6e7b7f5a2c8f0ebb8a3ab67c57a37ef9966d60",
+      "byte_count": 86,
+      "wire": "pxc",
+      "command": 1879048208,
+      "direction": "phone-to-dash",
+      "role": "wake",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"phoneType\":\"Android\",\"packageName\":\"com.cfmoto.cfmotointernational\"}"
+      }
+    },
+    {
+      "path": "handshake/wake-accepted.bin",
+      "sha256": "dabe5e207c9dc9ecdb6daaa83e04491c39d53f70180fce7a0122151dad7ee2dc",
+      "byte_count": 31,
+      "wire": "pxc",
+      "command": 1879048209,
+      "direction": "dash-to-phone",
+      "role": "wake",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"status\":true}"
+      }
+    },
+    {
+      "path": "handshake/wake-rejected.bin",
+      "sha256": "7a4732b0bcc22d915d91420929a7d4b6c183e7a4a3e4097e2abd76cdeacb38af",
+      "byte_count": 32,
+      "wire": "pxc",
+      "command": 1879048209,
+      "direction": "dash-to-phone",
+      "role": "wake",
+      "sources": [
+        "S3",
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"status\":false}"
+      }
+    },
+    {
+      "path": "handshake/car-ctrl-select.bin",
+      "sha256": "100c046b48907e3cf07998253e9961f2cc32842e5bae317029c5bf42b347f2ea",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 65536,
+      "direction": "dash-to-phone",
+      "role": "pxc-control",
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "handshake/car-ctrl-ack.bin",
+      "sha256": "111f5461656731baeca074f8af9eb86adcb2cc705aff13ec263f56dbb109adac",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 65537,
+      "direction": "phone-to-dash",
+      "role": "pxc-control",
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "handshake/car-data-select.bin",
+      "sha256": "7cc1a91349e71b4afdc5717fce27ac98c5731f217b53d713aed8d041fd4a8d80",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 131072,
+      "direction": "dash-to-phone",
+      "role": "pxc-control",
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "handshake/car-data-ack.bin",
+      "sha256": "a3180b3ca33a7d5bc3a951ddc6b38706a2bdd46c948d70be8761e974aed8e8a5",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 131073,
+      "direction": "phone-to-dash",
+      "role": "pxc-control",
+      "sources": [
+        "S4",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "capabilities/client-info-request.bin",
+      "sha256": "b3d38d37896da57b17d8677b599c41e653252bbd696696cae34b7fce5c9f532d",
+      "byte_count": 130,
+      "wire": "pxc",
+      "command": 65552,
+      "direction": "dash-to-phone",
+      "role": "pxc-control",
+      "sources": [
+        "S5",
+        "S6"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"HUID\":\"SYNTHETIC-HU-0001\",\"HUName\":\"Synthetic fixture\",\"sdkVersion\":\"0.9.29.1\",\"channel\":\"fixture-not-hardware\"}",
+        "note": "Shape only; invented identity and no authenticated reply"
+      }
+    },
+    {
+      "path": "handshake/check-sn-request.bin",
+      "sha256": "f36cc4fd7a4de8319ca75e47388ca8ab85c82835cae2b85e994b198b0da87789",
+      "byte_count": 67,
+      "wire": "pxc",
+      "command": 66528,
+      "direction": "dash-to-phone",
+      "role": "pxc-control",
+      "sources": [
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"client_set\":\"easy_conn\",\"sn\":\"SYNTHETIC-SN-0001\"}"
+      }
+    },
+    {
+      "path": "handshake/check-sn-ack.bin",
+      "sha256": "2e52ca50a8c8041ae3aa03ce9e6702f8d52ee1caaf839a56dee6665b105ece0c",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 66529,
+      "direction": "phone-to-dash",
+      "role": "pxc-control",
+      "sources": [
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": ""
+      }
+    },
+    {
+      "path": "handshake/check-sn-result.bin",
+      "sha256": "27790f19cef9439f3f6a91a1689309f10a89eea87dc0cbe66d8215e07ed6699a",
+      "byte_count": 103,
+      "wire": "pxc",
+      "command": 131520,
+      "direction": "phone-to-dash",
+      "role": "pxc-control",
+      "sources": [
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_text": "{\"isOk\":true,\"errCode\":0,\"errMsg\":\"\",\"id\":\"SYNTHETIC-SN-0001\",\"client_set\":\"easy_conn\"}"
+      }
+    },
+    {
+      "path": "heartbeat/pxc-request.bin",
+      "sha256": "572e2c708c4dd1d01886ff5d04c7449c09ec47be02f599dff231c32425b73dcd",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 1879048192,
+      "direction": "either-peer",
+      "role": "pxc-control",
+      "sources": [
+        "S3",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "heartbeat/pxc-ack.bin",
+      "sha256": "3644cd03c36b38e46adc13686509a1bcd8cd4278c42850b79515519f1b71cd05",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 1879048193,
+      "direction": "either-peer",
+      "role": "pxc-control",
+      "sources": [
+        "S3",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "heartbeat/media-request.bin",
+      "sha256": "a06f129fc52abf6085679d7cd71dc41ec7580c7f5f73efef6d02dde22bb00994",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 64,
+      "direction": "dash-to-phone",
+      "role": "media-control",
+      "sources": [
+        "S3",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "heartbeat/media-ack.bin",
+      "sha256": "14e4b8ac16877a5d25661d84f8558c1481bf795a165d92feee46191b3224cde5",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 65,
+      "direction": "phone-to-dash",
+      "role": "media-control",
+      "sources": [
+        "S3",
+        "S5"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "capabilities/config-capture-request.bin",
+      "sha256": "3ab9e27f10876aa167208b7112346aae9d5be388d01508d2d8a8b00fab8a7f62",
+      "byte_count": 40,
+      "wire": "media",
+      "command": 16,
+      "direction": "dash-to-phone",
+      "role": "media-control",
+      "sources": [
+        "S3",
+        "S10"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "200382011e000000020000000200000000006400a02526000000000000010000",
+        "width": 800,
+        "height": 386,
+        "fps": 30,
+        "encoder": 2,
+        "extension": 1,
+        "note": "Other reported fields invented; not a measured 450NK configuration"
+      }
+    },
+    {
+      "path": "capabilities/config-capture-reply.bin",
+      "sha256": "bd823c6b230b0456facfcecef910b04eba3e4022e87f84bae5cd84b082abcd39",
+      "byte_count": 17,
+      "wire": "media",
+      "command": 17,
+      "direction": "phone-to-dash",
+      "role": "media-control",
+      "sources": [
+        "S3",
+        "S6"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "020000002003800101",
+        "width": 800,
+        "height": 384,
+        "encoder": 2,
+        "extension": 1
+      }
+    },
+    {
+      "path": "capabilities/version-request.bin",
+      "sha256": "4779cee98e83f1a1592de4f293107545fabab96772e43de89f3437b35f08938f",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 48,
+      "direction": "dash-to-phone",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "capabilities/version-reply.bin",
+      "sha256": "aa9cd4f532bb1c74f0b5fb9e5387c90e49b94729cd6c0171bfd23b92899fb8af",
+      "byte_count": 16,
+      "wire": "media",
+      "command": 49,
+      "direction": "phone-to-dash",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "0300000001000000"
+      }
+    },
+    {
+      "path": "capabilities/extend-request.bin",
+      "sha256": "c335294898d6e5355cb8a2271e099781e2776f1a9ace0fae528c6eb74aa158cb",
+      "byte_count": 24,
+      "wire": "media",
+      "command": 96,
+      "direction": "dash-to-phone",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "7b2266697874757265223a747275657d"
+      }
+    },
+    {
+      "path": "capabilities/extend-reply.bin",
+      "sha256": "80d343dad354a4903f347eec21d6e70f8a15bd23301a3f1789202a76cc6390bf",
+      "byte_count": 19,
+      "wire": "media",
+      "command": 97,
+      "direction": "phone-to-dash",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "7b227374617465223a307d"
+      }
+    },
+    {
+      "path": "capabilities/start-h264-request.bin",
+      "sha256": "b1b0bee5378188f5250138bcce25855f2617f9c55b20b9628e13d367c47404a9",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 128,
+      "direction": "dash-to-phone",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "capabilities/start-h264-reply.bin",
+      "sha256": "d8c39643054af46129e207eabeef97a89854463ea88835f4dbc60d7fd3be1a5b",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 129,
+      "direction": "phone-to-dash",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "video/data-start.bin",
+      "sha256": "9db4153983d9b27cd8cf2dd3ed43a2c93c8681834c69b28aa38ab437c7e38ebd",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 112,
+      "direction": "dash-to-phone",
+      "role": "media-data",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "video/data-start-ack.bin",
+      "sha256": "6d0d22a95af6226f43d672c8a1301c9ae5bb6573ade9e00e0e6344ba3a2b8e6e",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 113,
+      "direction": "phone-to-dash",
+      "role": "media-data",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "video/data-next.bin",
+      "sha256": "95162f2a9e6c4d9e5aa58704c19103681d854690f9103f4c5587fb43a74c2c0a",
+      "byte_count": 8,
+      "wire": "media",
+      "command": 114,
+      "direction": "dash-to-phone",
+      "role": "media-data",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": ""
+      }
+    },
+    {
+      "path": "video/framing-only.bin",
+      "sha256": "594acfa437291c7789b8e33f9a159ae9cb324e5e66445865691a3dd71b885e4c",
+      "byte_count": 58,
+      "wire": "raw-video",
+      "command": null,
+      "direction": "phone-to-dash",
+      "role": "media-data",
+      "sources": [
+        "S3",
+        "S8",
+        "S10"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "body_hex": "000000016753594e5448455449432d535053000000016853594e5448455449432d505053000000016553594e5448455449432d494452",
+        "nal_types": [
+          7,
+          8,
+          5
+        ],
+        "decodable_h264": false,
+        "note": "Framing-only, non-decodable invented bodies; never a hardware test frame"
+      }
+    },
+    {
+      "path": "malformed/pxc-bad-xor.bin",
+      "sha256": "d4259206cab09019c9d06247e803204eeb3954859c9b428bbe4e7c0c30a29840",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 65536,
+      "direction": "test-only",
+      "role": "pxc-control",
+      "sources": [
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "bad-xor",
+        "note": "Defensive negative vector, not upstream-emitted traffic"
+      }
+    },
+    {
+      "path": "malformed/pxc-small-total.bin",
+      "sha256": "328360a877da9f048fe396781c2a3f9bcdc358d9364dccec097e3873483d3ff1",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 65536,
+      "direction": "test-only",
+      "role": "pxc-control",
+      "sources": [
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "undersized-total",
+        "note": "Defensive negative vector, not upstream-emitted traffic"
+      }
+    },
+    {
+      "path": "malformed/pxc-huge-total.bin",
+      "sha256": "db13032a87e5a2ab933f83b63b0f75838cd9fc7585e740738aee90e83dd44c1d",
+      "byte_count": 16,
+      "wire": "pxc",
+      "command": 65536,
+      "direction": "test-only",
+      "role": "pxc-control",
+      "sources": [
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "size-guard",
+        "note": "Defensive negative vector, not upstream-emitted traffic"
+      }
+    },
+    {
+      "path": "malformed/pxc-truncated-body.bin",
+      "sha256": "9967e22d2f59fdc8fe7e917a744242a30cfe9eb4c0e5e5ab0ab528d796f56881",
+      "byte_count": 17,
+      "wire": "pxc",
+      "command": 65552,
+      "direction": "test-only",
+      "role": "pxc-control",
+      "sources": [
+        "S4"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "incomplete",
+        "note": "Defensive negative vector, not upstream-emitted traffic"
+      }
+    },
+    {
+      "path": "malformed/media-truncated-body.bin",
+      "sha256": "3323157c122730876babb771c080ccc54eed206558c4974fc338c5051b22ee1c",
+      "byte_count": 16,
+      "wire": "media",
+      "command": 17,
+      "direction": "test-only",
+      "role": "media-control",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "incomplete"
+      }
+    },
+    {
+      "path": "malformed/raw-video-truncated.bin",
+      "sha256": "17c0820edf2a9ef7ca359528637a80fb364636543bc1855d2f9e65f139b3078f",
+      "byte_count": 57,
+      "wire": "raw-video",
+      "command": null,
+      "direction": "test-only",
+      "role": "media-data",
+      "sources": [
+        "S3"
+      ],
+      "origin": "invented-synthetic",
+      "expected": {
+        "rejection": "incomplete"
+      }
+    }
+  ]
+}

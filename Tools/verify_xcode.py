@@ -6,6 +6,7 @@ import re
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -42,7 +43,8 @@ def main() -> int:
         return 2
     common = ["xcodebuild", "-project", "OpenCFMoto.xcodeproj", "-scheme", "OpenCFMoto", "-derivedDataPath", "build/DerivedData", "CODE_SIGNING_ALLOWED=NO"]
     subprocess.run(common + ["-destination", "generic/platform=iOS Simulator", "build", "analyze"], cwd=ROOT, check=True)
-    subprocess.run(common + ["-destination", destination, "-resultBundlePath", "build/LaunchTests.xcresult", "test"], cwd=ROOT, check=True)
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    subprocess.run(common + ["-destination", destination, "-resultBundlePath", f"build/LaunchTests-{stamp}.xcresult", "test"], cwd=ROOT, check=True)
     return 0
 
 if __name__ == "__main__":

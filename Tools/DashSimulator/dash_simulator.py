@@ -2,8 +2,10 @@
 import argparse
 from contextlib import ExitStack
 import json
+import select
 import socket
 import struct
+import subprocess
 
 
 class PeerError(ValueError):
@@ -74,7 +76,47 @@ def expect_closed(connection):
         raise PeerError("session did not close")
 
 
-def run(bind, phone, ports, chunk_size=3, fault="none"):
+def expect_idle(connection):
+    if select.select([connection], [], [], 0.05)[0]:
+        raise PeerError("unsolicited media or early close")
+
+
+def read_video(connection):
+    header = exact(connection, 4)
+    length, = struct.unpack("<I", header)
+    if not 0 < length <= 1024 * 1024:
+        raise PeerError("invalid raw-video size")
+    body = exact(connection, length)
+    if not body.startswith(b"\x00\x00\x00\x01"):
+        raise PeerError("missing Annex-B start code")
+    nals = body.split(b"\x00\x00\x00\x01")[1:]
+    if any(not nal or nal[0] & 0x80 for nal in nals):
+        raise PeerError("invalid Annex-B unit")
+    return header + body, [nal[0] & 31 for nal in nals]
+
+
+def inspect_video(inspector, packets):
+    result = subprocess.run([inspector], input=b"".join(packets), capture_output=True, timeout=30)
+    if result.returncode != 0:
+        raise PeerError("independent video decode failed")
+    summary = json.loads(result.stdout)
+    images = summary.get("images", [])
+    if summary.get("result") != "PASS" or len(images) != 12 or summary.get("profile") != 66 or summary.get("level") != 31:
+        raise PeerError("unexpected decoded video profile/count")
+    for index, image in enumerate(images):
+        if image.get("width") != 800 or image.get("height") != 384 or abs(image.get("markerX", -1000) - index * 16) > 8:
+            raise PeerError("wrong decoded geometry or stale/static frame")
+        colors = image.get("colors", [])
+        expected = [[240, 20, 20], [20, 240, 20], [20, 20, 240]]
+        if len(colors) != 3 or any(len(actual) != 3 or any(abs(a - b) > 45 for a, b in zip(actual, target))
+                                   for actual, target in zip(colors, expected)):
+            raise PeerError("wrong decoded calibration colors")
+    if summary.get("keyframes", 0) < 2:
+        raise PeerError("restart did not produce a fresh keyframe")
+    return summary
+
+
+def run(bind, phone, ports, chunk_size=3, fault="none", video=False, inspector=None):
     wake_port, pxc_port, control_port, data_port = ports
     with ExitStack() as stack:
         server = stack.enter_context(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
@@ -178,12 +220,32 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
         expect(control, "media", 129)
 
         stream = callback(data_port)
+        if video:
+            expect_idle(stream)
         send_chunks(stream, media(112), chunk_size)
         if fault == "missing-channel":
             # Every capability is valid, but CAR_DATA was never selected.
             expect_closed(stream)
             return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
         expect(stream, "media", 113)
+        if video:
+            packets, keyframes = [], []
+            for index in range(12):
+                if index == 6:
+                    send_chunks(stream, media(112), chunk_size)
+                    expect(stream, "media", 113)
+                expect_idle(stream)
+                send_chunks(stream, media(114), chunk_size)
+                packet, types = read_video(stream)
+                if index in {0, 6} and not all(value in types for value in [7, 8, 5]):
+                    raise PeerError("startup/restart lacks SPS/PPS/IDR")
+                if 5 in types:
+                    keyframes.append(index)
+                packets.append(packet)
+            expect_closed(stream)
+            decoded = inspect_video(inspector, packets)
+            return {"mode": "synthetic-no-crypto", "result": "PASS", "channels": 4, "video_frames": 12,
+                    "keyframes": keyframes, "decoded_frames": len(decoded["images"]), "pull_only": True}
         send_chunks(stream, media(114), chunk_size)
         # The host probe has no frame source: a pull must not fabricate a frame/reply.
         expect_closed(stream)
@@ -197,15 +259,19 @@ def main():
     parser.add_argument("--ports", type=int, nargs=4, default=[10930, 10922, 10921, 10920],
                         metavar=("WAKE", "PXC", "CONTROL", "DATA"))
     parser.add_argument("--chunk-size", type=int, default=3)
+    parser.add_argument("--video", action="store_true")
+    parser.add_argument("--inspector", help="Independent native decoder executable (required with --video)")
     parser.add_argument("--fault", choices=["none", "delayed-wake", "reject-wake", "bad-xor", "oversized-pxc",
                                            "truncated-pxc", "unknown-command", "duplicate-channel", "duplicate-media", "missing-channel",
                                            "early-start", "early-pull", "disconnect"], default="none")
     args = parser.parse_args()
     if args.chunk_size < 1 or any(not 0 < port < 65536 for port in args.ports) or len(set(args.ports)) != 4:
         parser.error("positive chunk size and four distinct valid ports required")
+    if args.video and (not args.inspector or args.fault != "none"):
+        parser.error("video mode requires an inspector and the none fault case")
     try:
-        print(json.dumps(run(args.bind, args.phone, args.ports, args.chunk_size, args.fault), sort_keys=True))
-    except (PeerError, OSError, ValueError, struct.error):
+        print(json.dumps(run(args.bind, args.phone, args.ports, args.chunk_size, args.fault, args.video, args.inspector), sort_keys=True))
+    except (PeerError, OSError, ValueError, struct.error, subprocess.TimeoutExpired):
         print("SIMULATOR FAIL: invalid or incomplete synthetic exchange")
         return 1
     return 0

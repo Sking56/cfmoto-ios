@@ -94,7 +94,7 @@ SCHEME = '''<?xml version="1.0" encoding="UTF-8"?>
 def generate(root: Path = ROOT) -> None:
     project = root / "OpenCFMoto.xcodeproj"
     project.mkdir(parents=True, exist_ok=True)
-    core_sources = sorted(path for folder in ["Pairing", "EasyConnect"]
+    core_sources = sorted(path for folder in ["Pairing", "EasyConnect", "Video"]
                           for path in (root / "OpenCFMoto" / folder).rglob("*.swift"))
     definitions, build_ids, file_ids = [], [], []
     for index, source in enumerate(core_sources, start=1):

@@ -70,6 +70,21 @@ class DashSimulatorTests(unittest.TestCase):
         sender.shutdown(socket.SHUT_WR)
         dash.expect_closed(receiver)
 
+    def test_raw_video_literal_length_and_startup_types(self):
+        sender, receiver = self.pair()
+        body = bytes.fromhex("000000016701000000016802000000016503")
+        packet = struct.pack("<I", len(body)) + body
+        sender.sendall(packet)
+        self.assertEqual(dash.read_video(receiver), (packet, [7, 8, 5]))
+
+    def test_raw_video_rejects_header_limits_partial_eof_and_non_annex_b(self):
+        for packet in [struct.pack("<I", 0), struct.pack("<I", 1024 * 1024 + 1),
+                       struct.pack("<I", 5) + b"\x00\x00", struct.pack("<I", 4) + b"abcd"]:
+            sender, receiver = self.pair()
+            sender.sendall(packet); sender.shutdown(socket.SHUT_WR)
+            with self.assertRaises(dash.PeerError):
+                dash.read_video(receiver)
+
 
 if __name__ == "__main__":
     unittest.main()

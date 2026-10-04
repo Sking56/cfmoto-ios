@@ -54,6 +54,22 @@ class DashSimulatorTests(unittest.TestCase):
         with self.assertRaises(dash.PeerError):
             dash.expect(receiver, "pxc", 0x10001)
 
+    def test_encoders_enforce_local_frame_limits(self):
+        self.assertEqual(len(dash.pxc(1, b"x" * (1024 * 1024 - 16))), 1024 * 1024)
+        with self.assertRaises(dash.PeerError):
+            dash.pxc(1, b"x" * (1024 * 1024 - 15))
+        self.assertEqual(len(dash.media(1, b"x" * 65535)), 65543)
+        with self.assertRaises(dash.PeerError):
+            dash.media(1, b"x" * 65536)
+
+    def test_fault_observer_rejects_any_reply_then_accepts_eof(self):
+        sender, receiver = self.pair()
+        sender.sendall(b"x")
+        with self.assertRaises(dash.PeerError):
+            dash.expect_closed(receiver)
+        sender.shutdown(socket.SHUT_WR)
+        dash.expect_closed(receiver)
+
 
 if __name__ == "__main__":
     unittest.main()

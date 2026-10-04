@@ -30,6 +30,8 @@ The PXC header uses a total length, media uses a body length, and raw video uses
 
 Initial defensive limits are 1 MiB total PXC bytes, 65,535 media-body bytes, and 1 MiB raw access-unit bytes. These are local safety limits, not measured firmware maxima. Transport receive chunks and queued writes must also be bounded. The future video policy is specified in [VIDEO_PIPELINE.md](VIDEO_PIPELINE.md).
 
+The Gate 1 host probe's per-connection writer admits at most 64 writes and 256 KiB, including the single in-flight write. Multi-reply exchanges are admitted atomically and sent FIFO. Completion releases capacity; overflow fails the probe rather than discarding control replies. Closing purges the queue and prevents reuse or late completion. These are defensive host control-path limits, not a video queue policy or firmware measurements. Pending pre-wake evidence is a bounded set. The one-shot success summary waits for queued writes to complete and for partial inbound frames to finish; it does not prove the peer consumed or displayed those bytes.
+
 Stop invalidates the generation before resource teardown, stops frame admission, purges encoded output, cancels deadlines and writers, closes callbacks/listeners and stops owned capture/encoder work. Removing an app-owned Wi-Fi configuration is a separate explicit disconnect/forget action. Standard-Car stop has no verified wire command; TFT restoration needs hardware evidence.
 
 ## Implementation order and evidence

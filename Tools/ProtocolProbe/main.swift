@@ -16,11 +16,14 @@ struct SyntheticIdentity: ClientIdentityProvider {
 final class Peer: @unchecked Sendable {
     let connection: NWConnection
     var decoder: StreamDecoder
+    var writer: WriteQueue
     var channel: SessionChannel?
     let isWake: Bool
+    var started = false
 
     init(connection: NWConnection, format: WireFormat, channel: SessionChannel? = nil, isWake: Bool = false) throws {
         self.connection = connection; self.decoder = try StreamDecoder(format: format)
+        self.writer = try WriteQueue()
         self.channel = channel; self.isWake = isWake
     }
 }
@@ -34,12 +37,13 @@ final class HostProbe: @unchecked Sendable {
     var listeners: [NWListener] = []
     var peers: [Peer] = []
     var selected: Set<SessionChannel> = []
-    var pendingEvidence: [HandshakeEvidence] = []
+    var pendingEvidence: Set<HandshakeEvidence> = []
     var readyListeners = 0
     var complete = false
     var success = false
     var requestCount = 0
     var dataStarted = false
+    var pullObserved = false
 
     init(ports: [UInt16]) { self.ports = ports }
 
@@ -77,7 +81,6 @@ final class HostProbe: @unchecked Sendable {
                         let channel: SessionChannel? = index == 2 ? .mediaControl : (index == 3 ? .mediaData : nil)
                         if let channel {
                             guard self.selected.insert(channel).inserted else { throw ProtocolError.wrongChannel }
-                            try self.record(channel == .mediaControl ? .mediaControl : .mediaData)
                         }
                         let peer = try Peer(connection: connection, format: index == 1 ? .pxc : .media, channel: channel)
                         self.attach(peer)
@@ -95,10 +98,12 @@ final class HostProbe: @unchecked Sendable {
             let peer = try Peer(connection: connection, format: .pxc, isWake: true)
             peers.append(peer)
             connection.stateUpdateHandler = { status in
-                if case .ready = status {
+                guard !self.complete else { return }
+                if case .ready = status, !peer.started {
+                    peer.started = true
                     do {
                         let frame = PXCFrame(command: 0x70000010, body: Data("{\"phoneType\":\"Android\",\"packageName\":\"com.cfmoto.cfmotointernational\"}".utf8))
-                        self.send(try frame.encoded(), to: peer)
+                        try self.send([frame.encoded()], to: peer)
                         self.receive(peer)
                     } catch { self.finish(false, reason: "wakeEncodingFailed") }
                 } else if case .failed = status { self.finish(false, reason: "dashUnreachable") }
@@ -110,7 +115,16 @@ final class HostProbe: @unchecked Sendable {
     func attach(_ peer: Peer) {
         peers.append(peer)
         peer.connection.stateUpdateHandler = { status in
-            if case .ready = status { self.receive(peer) }
+            guard !self.complete else { return }
+            if case .ready = status, !peer.started {
+                peer.started = true
+                do {
+                    if let channel = peer.channel {
+                        try self.record(channel == .mediaControl ? .mediaControl : .mediaData)
+                    }
+                    self.receive(peer)
+                } catch { self.finish(false, reason: "callbackRejected") }
+            }
             else if case .failed = status { self.finish(false, reason: "connectionLost") }
         }
         peer.connection.start(queue: queue)
@@ -122,7 +136,10 @@ final class HostProbe: @unchecked Sendable {
             guard !self.complete else { return }
             do {
                 if let data {
-                    for frame in try peer.decoder.append(data) { try self.handle(frame, from: peer) }
+                    for frame in try peer.decoder.append(data) {
+                        guard !self.complete else { break }
+                        try self.handle(frame, from: peer)
+                    }
                 }
                 if self.complete { return }
                 if error != nil { self.finish(false, reason: "connectionLost"); return }
@@ -131,8 +148,10 @@ final class HostProbe: @unchecked Sendable {
                     if !peer.isWake { self.finish(false, reason: "callbackClosed") }
                     return
                 }
+                self.finishIfDrained()
                 self.receive(peer)
-            } catch { self.finish(false, reason: "protocolViolation") }
+            } catch WriteQueueError.capacityExceeded { self.finish(false, reason: "writeQueueFull") }
+            catch { self.finish(false, reason: "protocolViolation") }
         }
     }
 
@@ -166,23 +185,39 @@ final class HostProbe: @unchecked Sendable {
             guard state.state == .ready else { throw SessionTransitionError.invalidTransition }
             dataStarted = true
         }
-        for reply in result.replies { send(try reply.encoded(), to: peer) }
+        try send(result.replies.map { try $0.encoded() }, to: peer)
         for evidence in result.evidence { try record(evidence) }
         if result.requestsFrame {
             guard state.state == .ready, dataStarted else { throw SessionTransitionError.invalidTransition }
-            finish(true, reason: "synthetic-handshake-and-empty-pull")
+            pullObserved = true
         }
     }
 
     func record(_ evidence: HandshakeEvidence) throws {
-        if state.state == .connecting { pendingEvidence.append(evidence) }
+        if state.state == .connecting { pendingEvidence.insert(evidence) }
         else { try state.record(evidence, generation: state.generation) }
     }
 
-    func send(_ bytes: Data, to peer: Peer) {
+    func send(_ batch: [Data], to peer: Peer) throws {
+        try peer.writer.enqueue(batch)
+        drainWrites(peer)
+    }
+
+    func drainWrites(_ peer: Peer) {
+        guard !complete, let bytes = peer.writer.next() else { return }
         peer.connection.send(content: bytes, completion: .contentProcessed { error in
-            if error != nil { self.finish(false, reason: "sendFailed") }
+            guard !self.complete else { return }
+            guard error == nil else { self.finish(false, reason: "sendFailed"); return }
+            do { try peer.writer.completeWrite() }
+            catch { self.finish(false, reason: "writerFailed"); return }
+            self.drainWrites(peer)
+            self.finishIfDrained()
         })
+    }
+
+    func finishIfDrained() {
+        guard pullObserved, peers.allSatisfy({ $0.writer.pendingWriteCount == 0 && $0.decoder.bufferedByteCount == 0 }) else { return }
+        finish(true, reason: "synthetic-handshake-and-empty-pull")
     }
 
     func finish(_ success: Bool, reason: String) {
@@ -194,10 +229,13 @@ final class HostProbe: @unchecked Sendable {
             print(String(decoding: bytes, as: UTF8.self))
         }
         state.stop()
+        selected.removeAll(); pendingEvidence.removeAll(); dataStarted = false; pullObserved = false
         for listener in listeners {
             listener.stateUpdateHandler = nil; listener.newConnectionHandler = nil; listener.cancel()
         }
-        for peer in peers { peer.connection.stateUpdateHandler = nil; peer.connection.cancel() }
+        for peer in peers {
+            peer.writer.close(); peer.connection.stateUpdateHandler = nil; peer.connection.cancel()
+        }
         listeners.removeAll(); peers.removeAll()
         done.signal()
     }

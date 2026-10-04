@@ -9,6 +9,13 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+FAILURE_REASONS = {
+    "reject-wake": {"wakeRejected"},
+    "duplicate-media": {"callbackRejected"},
+    "disconnect": {"callbackClosed", "connectionLost"},
+    **{fault: {"protocolViolation"} for fault in ["bad-xor", "oversized-pxc", "truncated-pxc", "unknown-command",
+                                                "duplicate-channel", "missing-channel", "early-start", "early-pull"]},
+}
 SWIFT = ["swift", "test", "--disable-sandbox", "--scratch-path", "build/SwiftPM",
          "--cache-path", "build/SwiftCache", "--config-path", "build/SwiftConfig",
          "--security-path", "build/SwiftSecurity"]
@@ -37,7 +44,7 @@ def integration_case(binary, fault, chunk_size):
                 raise RuntimeError("dashboard failed to listen: " + ready)
             phone = subprocess.run([str(binary), *ports], cwd=ROOT, capture_output=True, text=True, timeout=18)
             output, _ = dashboard.communicate(timeout=8)
-            expected_success = fault == "none"
+            expected_success = fault in {"none", "delayed-wake"}
             if dashboard.returncode != 0 or phone.returncode != (0 if expected_success else 1):
                 raise RuntimeError(f"socket case {fault} failed\n{phone.stdout}{phone.stderr}{output}")
             dash_result, phone_result = json.loads(output), json.loads(phone.stdout)
@@ -45,6 +52,9 @@ def integration_case(binary, fault, chunk_size):
                     phone_result.get("result") != ("PASS" if expected_success else "FAIL") or \
                     phone_result.get("mode") != "synthetic-no-crypto":
                 raise RuntimeError("missing synthetic case evidence")
+            expected_reasons = {"synthetic-handshake-and-empty-pull"} if expected_success else FAILURE_REASONS[fault]
+            if phone_result.get("reason") not in expected_reasons:
+                raise RuntimeError(f"wrong termination reason for {fault}: {phone_result.get('reason')}")
             print(f"PASS: independent socket case fault={fault} chunk_size={chunk_size}", flush=True)
         finally:
             if dashboard.poll() is None:
@@ -64,7 +74,9 @@ def main():
     # SwiftPM exposes a platform-specific debug symlink at this path.
     binary = ROOT / "build/SwiftPM/debug/ProtocolProbe"
     for fault, chunk_size in [("none", 1), ("none", 65536), ("reject-wake", 3),
-                              ("bad-xor", 3), ("duplicate-channel", 3), ("early-start", 3), ("disconnect", 3)]:
+                              ("delayed-wake", 3), ("bad-xor", 3), ("oversized-pxc", 3), ("truncated-pxc", 3),
+                              ("unknown-command", 3), ("duplicate-channel", 3), ("duplicate-media", 3),
+                              ("missing-channel", 3), ("early-start", 3), ("early-pull", 3), ("disconnect", 3)]:
         integration_case(binary, fault, chunk_size)
     print("PASS: host protocol checks only; native iOS, RSA, capture, video and TFT remain unverified.")
     return 0

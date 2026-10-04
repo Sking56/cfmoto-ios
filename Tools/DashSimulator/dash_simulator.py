@@ -90,7 +90,8 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
             "phoneType": "Android", "packageName": "com.cfmoto.cfmotointernational"
         }:
             raise PeerError("unexpected wake request")
-        send_chunks(wake, pxc(0x70000011, json_body({"status": fault != "reject-wake"})), chunk_size)
+        if fault != "delayed-wake":
+            send_chunks(wake, pxc(0x70000011, json_body({"status": fault != "reject-wake"})), chunk_size)
         if fault == "reject-wake":
             expect_closed(wake)
             return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
@@ -101,6 +102,14 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
             return connection
 
         ctrl = callback(pxc_port)
+        if fault in {"oversized-pxc", "truncated-pxc"}:
+            total = 1024 * 1024 + 1
+            packet = struct.pack("<IIII", 0x10000, total, 0x10000 ^ total, 0) if fault == "oversized-pxc" else pxc(0x10000)[:12]
+            send_chunks(ctrl, packet, chunk_size)
+            if fault == "truncated-pxc":
+                ctrl.shutdown(socket.SHUT_WR)
+            expect_closed(ctrl)
+            return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
         if fault == "bad-xor":
             packet = bytearray(pxc(0x10000))
             packet[8] ^= 1
@@ -115,17 +124,26 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
         send_chunks(ctrl, pxc(0x10000) + pxc(0x70000000), chunk_size)
         expect(ctrl, "pxc", 0x10001)
         expect(ctrl, "pxc", 0x70000001)
-        data = callback(pxc_port)
-        if fault == "duplicate-channel":
-            send_chunks(data, pxc(0x10000), chunk_size)
-            expect_closed(data)
+        if fault == "unknown-command":
+            send_chunks(ctrl, pxc(0x33333), chunk_size)
+            expect_closed(ctrl)
             return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
-        send_chunks(data, pxc(0x20000) + pxc(0x70000000), chunk_size)
-        expect(data, "pxc", 0x20001)
-        expect(data, "pxc", 0x70000001)
-        if fault == "early-start":
+        data = ctrl
+        if fault != "missing-channel":
+            data = callback(pxc_port)
+            if fault == "duplicate-channel":
+                send_chunks(data, pxc(0x10000), chunk_size)
+                expect_closed(data)
+                return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
+            send_chunks(data, pxc(0x20000) + pxc(0x70000000), chunk_size)
+            expect(data, "pxc", 0x20001)
+            expect(data, "pxc", 0x70000001)
+        if fault == "delayed-wake":
+            # Both PXC selectors have already been acknowledged before wake acceptance.
+            send_chunks(wake, pxc(0x70000011, json_body({"status": True})), chunk_size)
+        if fault in {"early-start", "early-pull"}:
             stream = callback(data_port)
-            send_chunks(stream, media(112), chunk_size)
+            send_chunks(stream, media(112 if fault == "early-start" else 114), chunk_size)
             expect_closed(stream)
             return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
 
@@ -144,6 +162,10 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
         send_chunks(data, pxc(0x201c1), chunk_size)
 
         control = callback(control_port)
+        if fault == "duplicate-media":
+            duplicate = callback(control_port)
+            expect_closed(duplicate)
+            return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
         capture = bytearray(32)
         struct.pack_into("<HHii", capture, 0, 800, 386, 30, 2)
         capture[29] = 1
@@ -157,6 +179,10 @@ def run(bind, phone, ports, chunk_size=3, fault="none"):
 
         stream = callback(data_port)
         send_chunks(stream, media(112), chunk_size)
+        if fault == "missing-channel":
+            # Every capability is valid, but CAR_DATA was never selected.
+            expect_closed(stream)
+            return {"mode": "synthetic-no-crypto", "result": "fault-delivered", "fault": fault}
         expect(stream, "media", 113)
         send_chunks(stream, media(114), chunk_size)
         # The host probe has no frame source: a pull must not fabricate a frame/reply.
@@ -171,7 +197,9 @@ def main():
     parser.add_argument("--ports", type=int, nargs=4, default=[10930, 10922, 10921, 10920],
                         metavar=("WAKE", "PXC", "CONTROL", "DATA"))
     parser.add_argument("--chunk-size", type=int, default=3)
-    parser.add_argument("--fault", choices=["none", "reject-wake", "bad-xor", "duplicate-channel", "early-start", "disconnect"], default="none")
+    parser.add_argument("--fault", choices=["none", "delayed-wake", "reject-wake", "bad-xor", "oversized-pxc",
+                                           "truncated-pxc", "unknown-command", "duplicate-channel", "duplicate-media", "missing-channel",
+                                           "early-start", "early-pull", "disconnect"], default="none")
     args = parser.parse_args()
     if args.chunk_size < 1 or any(not 0 < port < 65536 for port in args.ports) or len(set(args.ports)) != 4:
         parser.error("positive chunk size and four distinct valid ports required")

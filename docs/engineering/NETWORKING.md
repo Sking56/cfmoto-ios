@@ -2,7 +2,7 @@
 
 Research date: 2026-10-04. Task: MVP-004, brief section 52. Requirements: REQ-NET-001, REQ-NET-002, REQ-NET-003; related REQ-REC-001 and REQ-LOG-002.
 
-Status: source research and candidate implementation guidance, awaiting independent review. The repository contains a launch skeleton; this document implements no networking feature. No iPhone, dashboard, native build, cellular coexistence, or background network behavior was tested. Architecture remains a later gate, after approved research is merged.
+Status: source research was independently reviewed and merged at `0ddff39c576c8087e94059ef6459152465c5b83d`. The repository contains a launch skeleton; no iPhone, dashboard, native app build, cellular coexistence or background network behavior was tested. The post-research candidate architecture is in [SYSTEM_ARCHITECTURE.md](SYSTEM_ARCHITECTURE.md); its independent review is pending.
 
 The APIs support joining an ordinary accessory Wi-Fi network with consent and constraining individual TCP listeners/connections to Wi-Fi. They do not guarantee that navigation apps retain Internet connectivity or that the projection process keeps running in the background. Those are separate physical-device acceptance criteria.
 

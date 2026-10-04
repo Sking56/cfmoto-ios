@@ -49,9 +49,11 @@ For physical-device installation choose your own development team and unique bun
 
 ## Resume the staged development
 
-Follow the brief's startup procedure. Check the research gate's recorded disposition before creating architecture. An architecture agent must consume the reviewed research on `main`; the architecture placeholders are not approved specifications.
+The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). Xcode 16.2/iOS 18.2 cannot run the required native checks. The dependency-free core can be tested using Swift 6 and Python 3.10+ with `python3 Tools/verify_gate1.py`; the candidate architecture and host protocol implementation are tracked in [STATUS.md](STATUS.md). The default Python 3.8 on that Mac is unsuitable; a bundled Python 3.12 was used. Keep native/capture gates pending until a matching iOS 27 SDK/runtime and physical device are available.
 
-Then build Gate 1 protocol core and an independently implemented Dash Simulator before adding synthetic video (Gate 2). Resolve the Android identity/RSA transformation compatibility, target pairing mode, raw-video boundary and fresh-keyframe behavior through the documented probes. Do not replace dash-pulled media with an unsolicited stream.
+Follow the brief's startup procedure. Check the research gate's recorded disposition and consume the reviewed research on `main`. The new architecture documents are candidate specifications and still require independent review.
+
+Continue Gate 1 protocol core and the independent Dash Simulator before adding synthetic video (Gate 2). The host probe's invented identity is deliberately synthetic and does not resolve Android identity/RSA transformation compatibility, target pairing mode, raw-video boundary or fresh-keyframe behavior. Resolve those through the documented probes. Do not replace dash-pulled media with an unsolicited stream.
 
 Before capture implementation, audit the installed iOS SDK against [IOS_PLATFORM.md](IOS_PLATFORM.md), including iOS-only picker entry points and the macOS configuration members that lack documented iOS availability. Use its consent/background/device probe; it is a test plan and has not been implemented or executed. Add actual capabilities and usage keys when the corresponding behavior is implemented, then verify built/signed values.
 

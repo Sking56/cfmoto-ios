@@ -24,4 +24,6 @@ Before importing code, record file, exact revision, authors, applicable license,
 
 ## Verification limits
 
+Mac Gate 1 provenance: `OpenCFMoto/Pairing/*.swift`, `OpenCFMoto/EasyConnect/*.swift`, the Swift host probe, Python dashboard peer and new tests were authored for this repository from the reviewed protocol facts and invented fixtures. No upstream Kotlin/source file, crypto implementation, library or notice text was copied or translated into these changes. No third-party runtime dependency was introduced. This records the implementation approach and is not an independent legal clearance or a project-license decision.
+
 License, NOTICE, README and build declaration were fetched at the exact revision; sampled headers were inspected in the matching local upstream clone. This is a research finding, not a determination about all upstream contributors' rights, patents, regional interoperability law, Apple distribution terms, or every dependency. No App Store release is in scope. Independent review and its tested branch SHA must be recorded before merging this workstream.

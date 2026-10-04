@@ -18,8 +18,8 @@ python Tools/verify_xcode.py
 
 The first two commands are portable foundation checks. The third requires macOS, Xcode, and an installed iOS 27+ iPhone simulator and performs a build plus a launch UI test. It fails explicitly if those prerequisites are unavailable. Passing portable checks does not establish that the app compiles or projects anything.
 
-CI is configured in `.github/workflows/ci.yml`. The destination is [Sking56/cfmoto-ios](https://github.com/Sking56/cfmoto-ios), with local `origin` set to `git@github.com:Sking56/cfmoto-ios.git`. Upload and hosted CI remain pending because GitHub rejected this Windows machine's SSH and stored HTTPS credentials. The [engineering index](docs/engineering/README.md) describes research and verification records. The [product index](docs/product/README.md) describes what a tester can currently do.
+CI is configured in `.github/workflows/ci.yml`. Committed history, four research branches and the `mvp-gate-0` tag have been uploaded to [Sking56/cfmoto-ios](https://github.com/Sking56/cfmoto-ios); local `main` tracks `origin/main`. Native and hosted CI results require their own verification. The [engineering index](docs/engineering/README.md) describes research and verification records. The [product index](docs/product/README.md) describes what a tester can currently do.
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
 
-Reviewed research and synthetic fixture checks are committed. Move to macOS using the generated Git bundle and [Mac handoff guide](docs/engineering/MAC_HANDOFF.md). Architecture and Gate 1 implementation come next.
+Reviewed research and synthetic fixture checks are committed. Clone the GitHub repository on your Mac and follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md). Architecture and Gate 1 implementation come next.

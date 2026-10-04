@@ -4,14 +4,10 @@ The user requested a committed handoff from Windows on 2026-10-04 and reported a
 
 ## Move the committed repository
 
-The destination is `git@github.com:Sking56/cfmoto-ios.git`, configured as this workspace's `origin`. GitHub rejected this Windows machine's SSH authentication and existing HTTPS credentials, so upload remains pending and the remote's contents have not been inspected.
-
-The coordinator refreshes `build/OpenCFMoto-iOS-handoff.bundle` after committing handoff changes. Copy that bundle to your authenticated Mac; it preserves commits, research branches and verified milestone tags. A bundle is a source handoff, not an installable iOS application.
-
-On the Mac, substitute the bundle's actual location:
+The repository is uploaded to `git@github.com:Sking56/cfmoto-ios.git`. SSH authentication succeeded on retry; main, all four research branches and the annotated Gate 0 tag were pushed and their remote revisions checked. Clone it directly on your authenticated Mac:
 
 ```sh
-git clone /path/to/OpenCFMoto-iOS-handoff.bundle OpenCFMoto-iOS
+git clone --branch main git@github.com:Sking56/cfmoto-ios.git OpenCFMoto-iOS
 cd OpenCFMoto-iOS
 git switch main
 git status --short
@@ -19,18 +15,19 @@ git log --oneline --decorate -20
 git tag --list
 ```
 
-The clone's `origin` initially points to the local bundle. Set the selected GitHub destination, check access and existing refs, then upload the committed history:
+The clone's origin is already GitHub and main tracks origin/main. Research branch tips are available under origin/research/*; the original reviewed milestone tag remains unchanged.
+
+The ignored `build/OpenCFMoto-iOS-handoff.bundle` is an optional offline copy of the committed source/history. If using that fallback, substitute its location and update the clone's remote:
 
 ```sh
+git clone /path/to/OpenCFMoto-iOS-handoff.bundle OpenCFMoto-iOS
+cd OpenCFMoto-iOS
 git remote set-url origin git@github.com:Sking56/cfmoto-ios.git
-git ls-remote origin
-git push -u origin main --follow-tags
-git push origin 'refs/remotes/origin/research/*:refs/heads/research/*'
+git fetch origin
+git branch --set-upstream-to=origin/main main
 ```
 
-The last command preserves the four research branch tips created as remote-tracking refs by the bundle clone. If Git reports an existing branch/tag conflict, inspect the remote history before resolving it; a normal push preserves existing remote history. After successful upload, fresh Mac checkouts can use `git clone git@github.com:Sking56/cfmoto-ios.git OpenCFMoto-iOS` directly.
-
-Ignored research downloads, agent worktrees, build products and signing credentials are excluded. Checked-in source citations and fixtures reproduce the research without them. Record the actual uploaded revision and hosted CI outcome when available.
+Ignored research downloads, agent worktrees, build products and signing credentials are excluded. Checked-in source citations and fixtures reproduce the research without them. Upload is complete; record native and hosted CI results against the exact revision actually tested.
 
 ## Run the first native verification
 

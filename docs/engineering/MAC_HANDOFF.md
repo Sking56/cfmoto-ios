@@ -49,9 +49,11 @@ For physical-device installation choose your own development team and unique bun
 
 ## Resume the staged development
 
-Follow the brief's startup procedure. Check the research gate's recorded disposition before creating architecture. An architecture agent must consume the reviewed research on `main`; the architecture placeholders are not approved specifications.
+The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). The user subsequently upgraded to Xcode 27/iOS 27; native simulator build, analysis and launch pass from clean checkouts. Current [Gate 1 evidence](verification/GATE_1_HARDENING.md) records independently verified 21 Swift tests, 24 Python tests and 14 socket cases at fde4c81. Architecture/core have independent static approval for the synthetic scope. Use Python 3.10+; a bundled Python 3.12 was used. Integration, physical signing, capture and hardware gates are tracked in [STATUS.md](STATUS.md).
 
-Then build Gate 1 protocol core and an independently implemented Dash Simulator before adding synthetic video (Gate 2). Resolve the Android identity/RSA transformation compatibility, target pairing mode, raw-video boundary and fresh-keyframe behavior through the documented probes. Do not replace dash-pulled media with an unsolicited stream.
+Follow the brief's startup procedure. Check the research gate's recorded disposition and consume the reviewed research on `main`. The new architecture documents are candidate specifications and still require independent review.
+
+Continue Gate 1 protocol core and the independent Dash Simulator before adding synthetic video (Gate 2). The host probe's invented identity is deliberately synthetic and does not resolve Android identity/RSA transformation compatibility, target pairing mode, raw-video boundary or fresh-keyframe behavior. Resolve those through the documented probes. Do not replace dash-pulled media with an unsolicited stream.
 
 Before capture implementation, audit the installed iOS SDK against [IOS_PLATFORM.md](IOS_PLATFORM.md), including iOS-only picker entry points and the macOS configuration members that lack documented iOS availability. Use its consent/background/device probe; it is a test plan and has not been implemented or executed. Add actual capabilities and usage keys when the corresponding behavior is implemented, then verify built/signed values.
 

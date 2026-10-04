@@ -12,6 +12,8 @@ The checked-in [Apple metadata record](research/APPLE_CAPTURE_METADATA_2026-10-0
 
 ## Availability checked individually
 
+Installed SDK update, 2026-10-04: Xcode 27.0 (27A266a) is now available. The iPhoneOS 27.0 headers were spot-checked and confirm the iOS picker entry points and explicit iOS unavailability of the five macOS settings/modes below. `SCStream.updateContentFilter` and `updateConfiguration` are also explicitly unavailable on iOS. This is header evidence only; a full Swift declaration probe and physical capture cases are still NOT RUN. See [native verification](verification/NATIVE_XCODE_27.md) for the exact environment and separately passing skeleton build/launch.
+
 For the following symbols, Apple DocC metadata reports iOS `introducedAt: 27.0`, `beta: false`, `unavailable: false`; their declaration platform list includes iOS. The framework collection also reports iOS 27.0 introduction. These values describe the retrieved documentation only.
 
 | API group | Documentation evidence | Consequence |
@@ -49,7 +51,7 @@ The iOS sample explicitly attributes full-display stream survival after backgrou
 These are proposed integration requirements, not implemented behavior:
 
 - Treat picker cancellation before capture as an ordinary return to idle. A picker cancellation while editing an existing selection is not automatically the same event as stopping its stream; probe both.
-- Apply updated system filters only to the intended active stream. Tag callbacks with a session generation so delayed output from a replaced stream cannot enter a new session.
+- Apply new system selections through a supported iOS stream lifecycle; the installed iOS 27 headers do not permit the macOS `SCStream.updateContentFilter` or `updateConfiguration` methods. Probe replacement/reconfiguration behavior, and tag callbacks with a session generation so delayed output from a replaced stream cannot enter a new session.
 - On `stream(_:didStopWithError:)`, stop admitting frames and clear pending captured/encoded output. Apple's [userStopped guidance](https://developer.apple.com/documentation/screencapturekit/scstreamerror/code/userstopped) classifies an intentional user stop as normal interaction. Do not restart capture automatically after the person stops sharing; return to a user-initiated selection flow.
 - Report `missingBackgroundMode` as a capability/configuration problem rather than repeatedly restarting the same stream. Record other stop errors by domain/code and bounded sanitized context.
 - Do not map [streamDidBecomeActive](https://developer.apple.com/documentation/screencapturekit/scstreamdelegate/streamdidbecomeactive%28_%3A%29) or [streamDidBecomeInactive](https://developer.apple.com/documentation/screencapturekit/scstreamdelegate/streamdidbecomeinactive%28_%3A%29) to app foreground/background transitions: their documented discussion concerns shared windows closing/reopening.

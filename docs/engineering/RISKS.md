@@ -13,6 +13,6 @@ Research disposition, 2026-10-04. Documented risks do not imply verified impleme
 | Encoder/thermal/buffering | Android tuning is not an iPhone/450NK limit | Bounded ownership/queues, measured statuses/memory/thermal state and >=30-minute run |
 | Stop/restoration | Standard-Car reference closes sockets; stop command unknown | TFT restoration and clean subsequent session |
 | Licensing/provenance | AGPL repo notice, some missing per-file headers and lineage questions | Per-change provenance, owner license choice/obligations before distribution |
-| Verification host | Windows session; user reports Mac/iPhone/450NK ready | Run native and later physical gates on exact revisions; hosted CI not run |
+| Verification host | Native simulator build/analyze/launch now PASS with Xcode 27 on a5a75ae; host tests pass with Swift 6.4 | Independent review and signed physical gates still required on exact revisions; hosted CI not run |
 
 See [protocol](OPENCFMOTO_RESEARCH.md), [capture](IOS_PLATFORM.md), [networking](NETWORKING.md), [licensing](LICENSING.md) and [Mac handoff](MAC_HANDOFF.md).

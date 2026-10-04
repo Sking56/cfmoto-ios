@@ -42,6 +42,12 @@ class RepositoryValidationTests(unittest.TestCase):
         (self.root / "OpenCFMoto.xcodeproj/xcshareddata/xcschemes/OpenCFMoto.xcscheme").write_text("<Scheme>", encoding="utf-8")
         self.assertTrue(any("Invalid shared scheme" in error for error in validate(self.root)))
 
+    def test_core_source_missing_from_xcode_is_rejected(self):
+        path = self.root / "OpenCFMoto.xcodeproj/project.pbxproj"
+        path.write_text(path.read_text(encoding="utf-8").replace(
+            "path = OpenCFMoto/EasyConnect/WireCodec.swift;", "path = omitted.swift;"), encoding="utf-8")
+        self.assertTrue(any("Core Swift source missing from Xcode" in error for error in validate(self.root)))
+
 class SimulatorSelectionTests(unittest.TestCase):
     def test_requires_available_iphone_and_supported_runtime(self):
         data = {"devices": {

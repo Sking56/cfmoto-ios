@@ -94,7 +94,26 @@ SCHEME = '''<?xml version="1.0" encoding="UTF-8"?>
 def generate(root: Path = ROOT) -> None:
     project = root / "OpenCFMoto.xcodeproj"
     project.mkdir(parents=True, exist_ok=True)
-    (project / "project.pbxproj").write_text(PROJECT, encoding="utf-8")
+    core_sources = sorted(path for folder in ["Pairing", "EasyConnect"]
+                          for path in (root / "OpenCFMoto" / folder).rglob("*.swift"))
+    definitions, build_ids, file_ids = [], [], []
+    for index, source in enumerate(core_sources, start=1):
+        build_id, file_id = f"B{2 * index:023X}", f"B{2 * index + 1:023X}"
+        relative = source.relative_to(root).as_posix()
+        definitions += [
+            f'        {build_id} = {{isa = PBXBuildFile; fileRef = {file_id}; }};',
+            f'        {file_id} = {{isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = {relative}; sourceTree = "<group>"; }};'
+        ]
+        build_ids.append(build_id)
+        file_ids.append(file_id)
+    rendered = PROJECT
+    if core_sources:
+        rendered = rendered.replace("    objects = {", "    objects = {\n" + "\n".join(definitions), 1)
+        rendered = rendered.replace("children = (A00000000000000000000011,",
+                                    "children = (" + ", ".join(file_ids) + ", A00000000000000000000011,", 1)
+        rendered = rendered.replace("files = (A00000000000000000000001);",
+                                    "files = (A00000000000000000000001, " + ", ".join(build_ids) + ");", 1)
+    (project / "project.pbxproj").write_text(rendered, encoding="utf-8")
     scheme = project / "xcshareddata/xcschemes/OpenCFMoto.xcscheme"
     scheme.parent.mkdir(parents=True, exist_ok=True)
     scheme.write_text(SCHEME, encoding="utf-8")

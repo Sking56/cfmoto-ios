@@ -17,6 +17,17 @@ jobs:
           python-version: '3.14'
       - run: python Tools/verify_repository.py
       - run: python -m unittest discover -s Tests -p 'test_*.py' -v
+  protocol:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - run: python Tools/verify_gate1.py
   xcode:
     runs-on: macos-latest
     timeout-minutes: 30

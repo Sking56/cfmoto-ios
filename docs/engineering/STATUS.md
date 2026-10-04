@@ -10,9 +10,9 @@ Source integration revision: 9aab7be1831b674c06ae47dc6109eb05ae5c09a5. Final han
 
 Verification on Windows / PowerShell / Python 3.14.3: repository validation PASS; all 17 portable tests PASS; all 36 generated artifacts match; pinned canonical upstream blob digests PASS. No unresolved actionable research-review findings remain after recorded corrections.
 
-UNVERIFIED: Xcode/Swift compilation, analyzer, UI launch, signing, capture, association/routing, crypto interoperability, projection, recovery, stop/restoration and 30-minute endurance. Hosted CI NOT RUN; no remote configured. Native verifier explicitly reports this unavailable Windows environment.
+UNVERIFIED: Xcode/Swift compilation, analyzer, UI launch, signing, capture, association/routing, crypto interoperability, projection, recovery, stop/restoration and 30-minute endurance. Hosted CI NOT RUN. Native verifier explicitly reports this unavailable Windows environment.
 
-The user reports Mac, physical iPhone and 450NK availability and requested committing before moving. No SSH connection was requested or used. Transfer build/OpenCFMoto-iOS-handoff.bundle and follow [MAC_HANDOFF.md](MAC_HANDOFF.md).
+The user reports Mac, physical iPhone and 450NK availability and requested committing before moving. The destination is now git@github.com:Sking56/cfmoto-ios.git, configured as origin. GitHub rejected both SSH authentication and the existing HTTPS credentials; remote contents could not be inspected and nothing has been pushed. Authentication is required to finish upload. The refreshed build/OpenCFMoto-iOS-handoff.bundle preserves the committed source, research branches and Gate 0 tag for a Mac-side push; follow [MAC_HANDOFF.md](MAC_HANDOFF.md). The historical Gate 0 verification/tag still describes its original tested revision and environment.
 
 Next on Mac: inspect repository/tasks; run portable and native foundation checks; record exact environment/SHA; then assign architecture from merged research. Architecture files remain placeholders. Implement protocol core/independent simulator before synthetic video, real capture and hardware gates.
 

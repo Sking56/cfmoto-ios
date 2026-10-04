@@ -4,7 +4,9 @@ The user requested a committed handoff from Windows on 2026-10-04 and reported a
 
 ## Move the committed repository
 
-The coordinator creates `build/OpenCFMoto-iOS-handoff.bundle` after the handoff commit. Copy that bundle to your Mac; it preserves commits, research branches and any verified milestone tags. No GitHub remote is configured. A bundle is a source handoff, not an installable iOS application.
+The destination is `git@github.com:Sking56/cfmoto-ios.git`, configured as this workspace's `origin`. GitHub rejected this Windows machine's SSH authentication and existing HTTPS credentials, so upload remains pending and the remote's contents have not been inspected.
+
+The coordinator refreshes `build/OpenCFMoto-iOS-handoff.bundle` after committing handoff changes. Copy that bundle to your authenticated Mac; it preserves commits, research branches and verified milestone tags. A bundle is a source handoff, not an installable iOS application.
 
 On the Mac, substitute the bundle's actual location:
 
@@ -17,7 +19,18 @@ git log --oneline --decorate -20
 git tag --list
 ```
 
-The clone's `origin` points to the local bundle. Preserve that history when setting up any later repository host. Ignored research downloads, agent worktrees, build products and signing credentials are not included; the checked-in source citations and fixtures reproduce the research without them.
+The clone's `origin` initially points to the local bundle. Set the selected GitHub destination, check access and existing refs, then upload the committed history:
+
+```sh
+git remote set-url origin git@github.com:Sking56/cfmoto-ios.git
+git ls-remote origin
+git push -u origin main --follow-tags
+git push origin 'refs/remotes/origin/research/*:refs/heads/research/*'
+```
+
+The last command preserves the four research branch tips created as remote-tracking refs by the bundle clone. If Git reports an existing branch/tag conflict, inspect the remote history before resolving it; a normal push preserves existing remote history. After successful upload, fresh Mac checkouts can use `git clone git@github.com:Sking56/cfmoto-ios.git OpenCFMoto-iOS` directly.
+
+Ignored research downloads, agent worktrees, build products and signing credentials are excluded. Checked-in source citations and fixtures reproduce the research without them. Record the actual uploaded revision and hosted CI outcome when available.
 
 ## Run the first native verification
 

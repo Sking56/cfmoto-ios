@@ -18,7 +18,7 @@ python Tools/verify_xcode.py
 
 The first two commands are portable foundation checks. The third requires macOS, Xcode, and an installed iOS 27+ iPhone simulator and performs a build plus a launch UI test. It fails explicitly if those prerequisites are unavailable. Passing portable checks does not establish that the app compiles or projects anything.
 
-CI is configured locally in `.github/workflows/ci.yml`; no remote repository or hosted CI run is currently established. The [engineering index](docs/engineering/README.md) describes research and verification records. The [product index](docs/product/README.md) describes what a tester can currently do.
+CI is configured in `.github/workflows/ci.yml`. The destination is [Sking56/cfmoto-ios](https://github.com/Sking56/cfmoto-ios), with local `origin` set to `git@github.com:Sking56/cfmoto-ios.git`. Upload and hosted CI remain pending because GitHub rejected this Windows machine's SSH and stored HTTPS credentials. The [engineering index](docs/engineering/README.md) describes research and verification records. The [product index](docs/product/README.md) describes what a tester can currently do.
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
 

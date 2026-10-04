@@ -49,7 +49,7 @@ For physical-device installation choose your own development team and unique bun
 
 ## Resume the staged development
 
-The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). The user subsequently upgraded to Xcode 27/iOS 27; native simulator build, analysis and launch now pass from a clean checkout, as recorded in [NATIVE_XCODE_27.md](verification/NATIVE_XCODE_27.md). The dependency-free core also passes under Swift 6.4 with `python3 Tools/verify_gate1.py`. Use Python 3.10+; a bundled Python 3.12 was used. Candidate architecture/core review, physical signing, capture and hardware gates remain pending; see [STATUS.md](STATUS.md).
+The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). The user subsequently upgraded to Xcode 27/iOS 27; native simulator build, analysis and launch pass from clean checkouts. Current [Gate 1 evidence](verification/GATE_1_HARDENING.md) records independently verified 21 Swift tests, 24 Python tests and 14 socket cases at fde4c81. Architecture/core have independent static approval for the synthetic scope. Use Python 3.10+; a bundled Python 3.12 was used. Integration, physical signing, capture and hardware gates are tracked in [STATUS.md](STATUS.md).
 
 Follow the brief's startup procedure. Check the research gate's recorded disposition and consume the reviewed research on `main`. The new architecture documents are candidate specifications and still require independent review.
 

@@ -1,6 +1,6 @@
 # Session state machine
 
-MVP-007 candidate specification, 2026-10-04; independent review pending. REQ-PROJ-001, REQ-REC-001. A single coordinator owns transitions; UI displays snapshots and sends commands.
+MVP-007 specification, 2026-10-04; independently approved for the synthetic Gate 1 scope at fde4c81. REQ-PROJ-001, REQ-REC-001. A single coordinator owns transitions; UI displays snapshots and sends commands. Capture/recovery states below are future integration work, not verified runtime behavior; see [review/evidence](verification/GATE_1_HARDENING.md).
 
 ## Connection lifecycle
 

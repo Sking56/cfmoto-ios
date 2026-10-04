@@ -1,6 +1,6 @@
 # System architecture
 
-MVP-007, 2026-10-04. Candidate specification based on the reviewed Gate 0 research on `main` at `cd5d9a47aada71f211b0d8f73eff180dd89f87e5`. Independent architecture review is pending. This document defines the implementation plan; it does not establish device compatibility.
+MVP-007, 2026-10-04. Specification based on reviewed Gate 0 research on `main` at `cd5d9a47aada71f211b0d8f73eff180dd89f87e5`. Architecture independently approved for the synthetic Gate 1 scope at `fde4c817ce75514d973f00820e21498f35ade4b6`; see [review/evidence](verification/GATE_1_HARDENING.md). Future capture/video/network adapters remain implementation plans, not established device compatibility.
 
 ## Ownership and boundaries
 

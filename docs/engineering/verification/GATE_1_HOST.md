@@ -2,6 +2,8 @@
 
 Date: 2026-10-04. Implementation revision tested: `7a377f0e06dee79c989609bdd87e0c1df868bf11`. Architecture candidate: `ca5553507a8ff304a2232ac74aa210b2b6ab178e`. Integration base: `cd5d9a47aada71f211b0d8f73eff180dd89f87e5`.
 
+Historical baseline: the later bounded-writer revision, current toolchain results and independent review are recorded in [Gate 1 hardening](GATE_1_HARDENING.md). The original results/disposition below describe this earlier snapshot, not current pending-review or SDK status.
+
 A fresh detached checkout of the implementation commit was created at `.worktrees/gate1-verification`. Its tracked/untracked status was empty before testing and remained empty afterward; generated caches/builds are ignored. The original checkout's pre-existing untracked Xcode workspace was not included or modified. This is coordinator verification and self-review, not independent approval.
 
 Environment: macOS 14.6.1 (23G93), Xcode 16.2 (16C5032a), Apple Swift 6.0.3, macOS SDK 15.2, iOS/iOS Simulator SDK 18.2, bundled Python 3.12.14. The shell's Python 3.8 is below the documented prerequisite. Local socket tests required sandbox escalation for loopback bind/connect; no dashboard, phone or external network endpoint was contacted.

@@ -1,0 +1,2408 @@
+{
+  "retrievedOn": "2026-10-04",
+  "scope": "Apple DocC metadata, not installed SDK headers or physical-device evidence",
+  "sha256Method": "SHA-256 over UTF-8 encoding of retrieved JSON response string",
+  "records": [
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit.json",
+      "sha256Utf8": "65fedd64b04e433ec7a87cd2f585ce58bf4608d42cabf48e3488016ee6bcacee",
+      "title": "ScreenCaptureKit",
+      "platforms": [
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "iOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst"
+        },
+        {
+          "beta": false,
+          "introducedAt": "12.3",
+          "name": "macOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "tvOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "visionOS"
+        }
+      ],
+      "declarations": []
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/capturing-screen-content-on-ios.json",
+      "sha256Utf8": "6b5e66ef1dfa997ca5962a450295011e9bc94f24615f56913226048f95298afc",
+      "title": "Capturing screen content on iOS",
+      "platforms": [
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "iOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "Mac Catalyst"
+        },
+        {
+          "beta": false,
+          "introducedAt": "27.0",
+          "name": "Xcode"
+        }
+      ],
+      "declarations": []
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpicker.json",
+      "sha256Utf8": "bf93247f0130fd83748311285a21ce75b0e10a154882755c7f64e88a154f454e",
+      "title": "SCContentSharingPicker",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "14.0",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "class SCContentSharingPicker"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpicker/present().json",
+      "sha256Utf8": "1312700b85e4dd8b841add180f719619175b6242fc8654373268110652b39e8d",
+      "title": "present()",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "14.0",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "visionOS"
+          ],
+          "declaration": "func present()"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpicker/presentforcurrentapplication().json",
+      "sha256Utf8": "cbb28dbb512f7e25bc550724fbcea3ff15ad968e54953baf4e62d87bc8d7c0bd",
+      "title": "presentForCurrentApplication()",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func presentForCurrentApplication()"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpickerobserver.json",
+      "sha256Utf8": "06ba77aa1ce42fd29da8cb3e6a0c64fddbf54b1b159684ae4f07e379d982abeb",
+      "title": "SCContentSharingPickerObserver",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "14.0",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "protocol SCContentSharingPickerObserver : NSObjectProtocol"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpickerconfiguration-swift.struct/allowedpickermodes.json",
+      "sha256Utf8": "0790cf63774af3242edef45428b22ded0d7a883a8fbddb671a3fd077ba02c9b3",
+      "title": "allowedPickerModes",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "14.0",
+          "name": "macOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "Mac Catalyst",
+            "macOS"
+          ],
+          "declaration": "var allowedPickerModes: SCContentSharingPickerMode"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentsharingpickermode/singledisplay.json",
+      "sha256Utf8": "293ecdcdd1c635b84288a167dea344f96e75df64b3d6dc574168027af0627d3a",
+      "title": "singleDisplay",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "14.0",
+          "name": "macOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "Mac Catalyst",
+            "macOS"
+          ],
+          "declaration": "static var singleDisplay: SCContentSharingPickerMode { get }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstream.json",
+      "sha256Utf8": "cc5ab38ec04a616ac6352acba9fd2a43986f5aa5597f56ba8b1fb4ddfc1704c8",
+      "title": "SCStream",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "class SCStream"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstream/startcapture(completionhandler:).json",
+      "sha256Utf8": "8797d224a74b54a80ff5b70baa46dbad257945296f723c28a409f76dc2bfe303",
+      "title": "startCapture(completionHandler:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func startCapture(completionHandler: (@Sendable ((any Error)?) -> Void)? = nil)"
+        },
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func startCapture() async throws"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamoutput.json",
+      "sha256Utf8": "50c63664ec4c0a4683cbab10da16fccd82baab1969cfcdc8768f818049fcdf00",
+      "title": "SCStreamOutput",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "protocol SCStreamOutput : NSObjectProtocol"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamoutput/stream(_:didoutputsamplebuffer:of:).json",
+      "sha256Utf8": "abd1bcdfb3797ce87535e7652296822cf55822ee1bb6a607917e3ed57859c897",
+      "title": "stream(_:didOutputSampleBuffer:of:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "optional func stream(_ stream: SCStream, didOutputSampleBuffer sampleBuffer: CMSampleBuffer, of type: SCStreamOutputType)"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamoutputtype/screen.json",
+      "sha256Utf8": "a91a3e5d624ffc6a2ef722b27ece66b6baf00e4dd2155324310715c78e0caba7",
+      "title": "SCStreamOutputType.screen",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case screen"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/sccontentfilter.json",
+      "sha256Utf8": "a64383c591849040692c7d1f7d02178c0fd7bab05944333c607fe65228138c9c",
+      "title": "SCContentFilter",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "class SCContentFilter"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration.json",
+      "sha256Utf8": "4dc3ed651a43dc88d0a4e4312771c5ea16cf4c7de57425d49d2ef795e65d1cc9",
+      "title": "SCStreamConfiguration",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "class SCStreamConfiguration"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration/width.json",
+      "sha256Utf8": "c1840525784f17c0c58dd2cd4b729769f665b0efe09ad868e8ddc956ccd22478",
+      "title": "width",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS"
+          ],
+          "declaration": "var width: Int { get set }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration/height.json",
+      "sha256Utf8": "e86d2b3c32cb2ccaf01779ee95d9d0f5e5a484a7fb99a66f3c72f01a01d182b0",
+      "title": "height",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS"
+          ],
+          "declaration": "var height: Int { get set }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration/queuedepth.json",
+      "sha256Utf8": "7341f1014913880a5a8afd6520162738ea616a8a90fbd5f40cc399c414d8b37b",
+      "title": "queueDepth",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "Mac Catalyst",
+            "macOS"
+          ],
+          "declaration": "var queueDepth: Int { get set }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration/pixelformat.json",
+      "sha256Utf8": "9864425348bf0e10ebd9a130243e2c405a8cfeffa6a49680505189bff670b38b",
+      "title": "pixelFormat",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "Mac Catalyst",
+            "macOS"
+          ],
+          "declaration": "var pixelFormat: OSType { get set }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamconfiguration/minimumframeinterval.json",
+      "sha256Utf8": "f0aa9549d99f0811d7aff00501c6e14ba64b25d41d66776eb1729b980be9679a",
+      "title": "minimumFrameInterval",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "Mac Catalyst",
+            "macOS"
+          ],
+          "declaration": "var minimumFrameInterval: CMTime { get set }"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamframeinfo.json",
+      "sha256Utf8": "8afd34714fb7b2681e2dd3b7441448278749bf074309104c8155575d6005e650",
+      "title": "SCStreamFrameInfo",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "struct SCStreamFrameInfo"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamframeinfo/status.json",
+      "sha256Utf8": "2fe44bf985fcb9f3117862a717ef052c9388982e42be94054f1c1f14432af25b",
+      "title": "status",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "static let status: SCStreamFrameInfo"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamframeinfo/videoorientation.json",
+      "sha256Utf8": "f13dbbc15ac32ec8aa4bf3b62d1ee8c5a9bb3beb2ca18db8e152646b147d343a",
+      "title": "videoOrientation",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "visionOS"
+          ],
+          "declaration": "static let videoOrientation: SCStreamFrameInfo"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scframestatus.json",
+      "sha256Utf8": "4b69e9efce125e1e9992984bd49e298dc33737a3c55a702cbd29961f39e8945c",
+      "title": "SCFrameStatus",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "enum SCFrameStatus"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scframestatus/complete.json",
+      "sha256Utf8": "03176567877a7ac62be987e2bb97aa56397c706758e16aa4b2778786f926c35c",
+      "title": "SCFrameStatus.complete",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case complete"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scframestatus/idle.json",
+      "sha256Utf8": "625760afeca47c35dc584e3f5b8a089012aca2bfd14abb33f7df8a46db30d790",
+      "title": "SCFrameStatus.idle",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case idle"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scframestatus/blank.json",
+      "sha256Utf8": "c87cfbdc87912bbeaabb947e6a6017ad3a34e2b684c17f68e617d7dc1fe3ff0f",
+      "title": "SCFrameStatus.blank",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case blank"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scframestatus/suspended.json",
+      "sha256Utf8": "f14d1804c61d95598b072e63a2203dd88758773438b37d4ea2fa49d72c19148d",
+      "title": "SCFrameStatus.suspended",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case suspended"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamdelegate/stream(_:didstopwitherror:).json",
+      "sha256Utf8": "c2d87638593db05d56cfa0457e436ba2585497cbafe27b9315c8a8870456e427",
+      "title": "stream(_:didStopWithError:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "optional func stream(_ stream: SCStream, didStopWithError error: any Error)"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamdelegate/streamdidbecomeactive(_:).json",
+      "sha256Utf8": "4fd9ec5b6d113a805251dd664f481d56d002e7150fb46aa067a8387f3c8577aa",
+      "title": "streamDidBecomeActive(_:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "15.2",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "optional func streamDidBecomeActive(_ stream: SCStream)"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamdelegate/streamdidbecomeinactive(_:).json",
+      "sha256Utf8": "bd3b76e2385cb306fbefb1bcd5a6121d135b86fe197f637e86eafd55d1a17987",
+      "title": "streamDidBecomeInactive(_:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "15.2",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "optional func streamDidBecomeInactive(_ stream: SCStream)"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamerror/code/userstopped.json",
+      "sha256Utf8": "345a7dfb2830b28fb8ccc5b7784c6b92e848339c6526f3e4b89938ab1f519681",
+      "title": "SCStreamError.Code.userStopped",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "18.2",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case userStopped"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/screencapturekit/scstreamerror/code/missingbackgroundmode.json",
+      "sha256Utf8": "5e3a0ecb7816c05e1e53f37ceb1f5bc3c585957a45fa2a18c521a51550f42ab7",
+      "title": "SCStreamError.Code.missingBackgroundMode",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "12.3",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "27.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "case missingBackgroundMode"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/bundleresources/information-property-list/uibackgroundmodes.json",
+      "sha256Utf8": "6f7295e2e73dd7213d353fea71677faf7f15147620e70b0d0d8b8b9bc3f5c22d",
+      "title": "UIBackgroundModes",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "4.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "4.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "4.0",
+          "name": "watchOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": []
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/xcode/configuring-background-execution-modes.json",
+      "sha256Utf8": "ff9c85329d4073e1c0499e3d760e78a992223b548fe5cef6977574e8f44d7c4c",
+      "title": "Configuring background execution modes",
+      "platforms": null,
+      "declarations": []
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/coremedia/cmsamplebuffergetimagebuffer(_:).json",
+      "sha256Utf8": "c26b1580f9c94c43e2117d67a0a736f37ce54b641930c5515d041d1e3d45d20f",
+      "title": "CMSampleBufferGetImageBuffer(_:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "4.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "4.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.7",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "9.0",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "6.0",
+          "name": "watchOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS",
+            "watchOS"
+          ],
+          "declaration": "func CMSampleBufferGetImageBuffer(_ sbuf: CMSampleBuffer) -> CVImageBuffer?"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/vtcompressionsessioncreate(allocator:width:height:codectype:encoderspecification:imagebufferattributes:compresseddataallocator:outputcallback:refcon:compressionsessionout:).json",
+      "sha256Utf8": "04a7c419c568c8e5ffc40288c69d34e845aba8607b3fd8b89972db1aea3ac03c",
+      "title": "VTCompressionSessionCreate(allocator:width:height:codecType:encoderSpecification:imageBufferAttributes:compressedDataAllocator:outputCallback:refcon:compressionSessionOut:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.8",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func VTCompressionSessionCreate(allocator: CFAllocator?, width: Int32, height: Int32, codecType: CMVideoCodecType, encoderSpecification: CFDictionary?, imageBufferAttributes sourceImageBufferAttributes: CFDictionary?, compressedDataAllocator: CFAllocator?, outputCallback: VTCompressionOutputCallback?, refcon outputCallbackRefCon: UnsafeMutableRawPointer?, compressionSessionOut: UnsafeMutablePointer<VTCompressionSession?>) -> OSStatus"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/vtcompressionsessionencodeframe(_:imagebuffer:presentationtimestamp:duration:frameproperties:sourceframerefcon:infoflagsout:).json",
+      "sha256Utf8": "1151b793b6163df5a5aae2893d733d4ad208d4be7cb1acb2d610d0f9320dab23",
+      "title": "VTCompressionSessionEncodeFrame(_:imageBuffer:presentationTimeStamp:duration:frameProperties:sourceFrameRefcon:infoFlagsOut:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.8",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func VTCompressionSessionEncodeFrame(_ session: VTCompressionSession, imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime, frameProperties: CFDictionary?, sourceFrameRefcon: UnsafeMutableRawPointer?, infoFlagsOut: UnsafeMutablePointer<VTEncodeInfoFlags>?) -> OSStatus"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/kvtcompressionpropertykey_realtime.json",
+      "sha256Utf8": "75f50f8736ea05e434ac67ca0401c7bc5f533ffc5933f56d2d8f01956069e9f9",
+      "title": "kVTCompressionPropertyKey_RealTime",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.9",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "let kVTCompressionPropertyKey_RealTime: CFString"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/kvtcompressionpropertykey_allowframereordering.json",
+      "sha256Utf8": "75d7530a18bf7e7bedeef56cb5624fdf7fcb3ef747ac85628d389427a3b601fc",
+      "title": "kVTCompressionPropertyKey_AllowFrameReordering",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.8",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "let kVTCompressionPropertyKey_AllowFrameReordering: CFString"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/kvtcompressionpropertykey_expectedframerate.json",
+      "sha256Utf8": "a98150e142a41405dfefe109a3cc1d7b0561b1ee65e6c6c051c384f361855352",
+      "title": "kVTCompressionPropertyKey_ExpectedFrameRate",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.8",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "let kVTCompressionPropertyKey_ExpectedFrameRate: CFString"
+        }
+      ]
+    },
+    {
+      "source": "https://developer.apple.com/tutorials/data/documentation/videotoolbox/vtcompressionsessioninvalidate(_:).json",
+      "sha256Utf8": "5a46c0a9d5755ac1c86065cf5a1da6a2488046c22b3f495f407ad4bd3fb7b451",
+      "title": "VTCompressionSessionInvalidate(_:)",
+      "platforms": [
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "8.0",
+          "name": "iPadOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "13.1",
+          "name": "Mac Catalyst",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.8",
+          "name": "macOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "10.2",
+          "name": "tvOS",
+          "unavailable": false
+        },
+        {
+          "beta": false,
+          "deprecated": false,
+          "introducedAt": "1.0",
+          "name": "visionOS",
+          "unavailable": false
+        }
+      ],
+      "declarations": [
+        {
+          "languages": [
+            "swift"
+          ],
+          "platforms": [
+            "iOS",
+            "iPadOS",
+            "Mac Catalyst",
+            "macOS",
+            "tvOS",
+            "visionOS"
+          ],
+          "declaration": "func VTCompressionSessionInvalidate(_ session: VTCompressionSession)"
+        }
+      ]
+    }
+  ]
+}

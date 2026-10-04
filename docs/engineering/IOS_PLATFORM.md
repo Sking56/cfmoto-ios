@@ -1,3 +1,99 @@
-# Ios Platform
+# iOS capture feasibility
 
-Pending assigned research or post-research specification. No implementation or verification is claimed.
+Research date: 2026-10-04. Task: MVP-003, brief section 52, branch `research/ios-screen-capture`. Scope: REQ-CAP-001, REQ-CAP-002 and the capture input to REQ-VID-001. Networking research is maintained in [NETWORKING.md](NETWORKING.md).
+
+## Finding and evidence boundary
+
+Apple currently documents ScreenCaptureKit on iOS 27, including system selection of the entire display and continued full-display capture while the originating app is backgrounded. This provides a documented route to the required architecture. Waze/Maps capture, video-only background encoding and transport, interruption recovery, and 30-minute operation have **not** been demonstrated by this repository. No capture implementation is included in this research.
+
+The [current framework overview](https://developer.apple.com/documentation/screencapturekit) explicitly includes iOS, recommends the system sharing picker, and says ScreenCaptureKit supersedes ReplayKit for streaming/mirroring without a broadcast extension. An old macOS-only conclusion would be incorrect for this target. Apple's [iOS capture sample](https://developer.apple.com/documentation/screencapturekit/capturing-screen-content-on-ios) requires iOS 27 or later and describes both entire-display and in-app capture.
+
+The checked-in [Apple metadata record](research/APPLE_CAPTURE_METADATA_2026-10-04.json) contains public DocC source URLs, response hashes, platform availability and Swift declaration excerpts for 42 relevant pages, fetched on the research date. This is documentation evidence, **not an installed SDK header audit**. Apple documentation can change and some linked pages retain beta notices; recheck against the specific SDK and final OS used for verification. This Windows host has no Xcode/iPhone verification environment.
+
+## Availability checked individually
+
+For the following symbols, Apple DocC metadata reports iOS `introducedAt: 27.0`, `beta: false`, `unavailable: false`; their declaration platform list includes iOS. The framework collection also reports iOS 27.0 introduction. These values describe the retrieved documentation only.
+
+| API group | Documentation evidence | Consequence |
+|---|---|---|
+| System picker | [SCContentSharingPicker](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpicker), [present()](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpicker/present%28%29), [presentForCurrentApplication()](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpicker/presentforcurrentapplication%28%29) | iOS entry points are documented; select full display for cross-app projection. |
+| Selected content | [SCContentSharingPickerObserver](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpickerobserver), [SCContentFilter](https://developer.apple.com/documentation/screencapturekit/sccontentfilter) | Obtain the filter through the system selection callback. |
+| Stream | [SCStream](https://developer.apple.com/documentation/screencapturekit/scstream), [startCapture](https://developer.apple.com/documentation/screencapturekit/scstream/startcapture%28completionhandler%3A%29), [SCStreamConfiguration](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration) | Configure, attach output, and start asynchronously; creation alone proves no capture. |
+| Frames | [SCStreamOutput](https://developer.apple.com/documentation/screencapturekit/scstreamoutput), [screen output](https://developer.apple.com/documentation/screencapturekit/scstreamoutputtype/screen), [sample callback](https://developer.apple.com/documentation/screencapturekit/scstreamoutput/stream%28_%3Adidoutputsamplebuffer%3Aof%3A%29) | Raw frames arrive as `CMSampleBuffer` with output type. |
+| Geometry | [width](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration/width), [height](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration/height), [videoOrientation](https://developer.apple.com/documentation/screencapturekit/scstreamframeinfo/videoorientation) | Dimensions and orientation metadata have iOS declarations; behavior still needs probing. |
+| Lifecycle | [stop callback](https://developer.apple.com/documentation/screencapturekit/scstreamdelegate/stream%28_%3Adidstopwitherror%3A%29), [userStopped](https://developer.apple.com/documentation/screencapturekit/scstreamerror/code/userstopped), [missingBackgroundMode](https://developer.apple.com/documentation/screencapturekit/scstreamerror/code/missingbackgroundmode) | Capture can terminate; handle consent withdrawal and configuration failures. |
+
+Do not assume the whole macOS API surface is available on iPhone. The retrieved declarations for [allowedPickerModes](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpickerconfiguration-swift.struct/allowedpickermodes), [singleDisplay](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpickermode/singledisplay), [queueDepth](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration/queuedepth), [pixelFormat](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration/pixelformat), and [minimumFrameInterval](https://developer.apple.com/documentation/screencapturekit/scstreamconfiguration/minimumframeinterval) list only Mac Catalyst/macOS, with no iOS metadata entry. This is a concrete porting constraint to verify in the installed SDK, not a compiler test performed here. In particular, macOS's documented queue-depth default/limit and pixel-format selection must not be presented as iOS guarantees.
+
+## Consent and background execution
+
+Use the shared system picker and register its observer before presentation. Apple's iOS sample identifies `present()` as the full-display entry point and `presentForCurrentApplication()` as restricted to the app itself. Full-display capture is necessary for REQ-CAP-002. Start a stream only after a returned system-selected filter, and surface cancellation or picker start failure without transmitting frames. The [observer contract](https://developer.apple.com/documentation/screencapturekit/sccontentsharingpickerobserver) distinguishes selection updates, cancellation, and start errors.
+
+The framework overview instructs adding `NSScreenCaptureUsageDescription` to explain screen recording access. Verify the actual iOS prompt and required built-product key against the chosen SDK; a separate public DocC page for that key returned 404 during this research. That lookup failure does not invalidate the overview's instruction. Full-display selection is explicit consent to screen sharing; do not equate a generic permission explanation, in-app selection, or a saved filter with fresh full-display authorization.
+
+Apple's [background capability documentation](https://developer.apple.com/documentation/xcode/configuring-background-execution-modes) lists **Screen Capture**, value `screen-capture`, for iOS/iPadOS/visionOS, for capture and streaming while backgrounded. Enable Background Modes on the app target. The [UIBackgroundModes definition](https://developer.apple.com/documentation/bundleresources/information-property-list/uibackgroundmodes) includes that value. The expected built-product declaration is:
+
+```xml
+<key>UIBackgroundModes</key>
+<array>
+    <string>screen-capture</string>
+</array>
+```
+
+The iOS sample explicitly attributes full-display stream survival after backgrounding to this mode; its additional `audio` mode serves microphone sampling. The MVP excludes audio. The probe must therefore test `screen-capture` with no microphone, camera, silent-audio workaround, or audio background mode. General background tasks or timers do not substitute for the capture capability.
+
+**Inference to test:** a full-display stream with this capability can feed video encoding and local transport while Waze/Apple Maps is foreground. The documentation supports background screen streaming, but does not establish performance of this entire custom data path, indefinite execution, arbitrary navigation app contents, lock-screen behavior, or permission persistence after relaunch. Nothing here proves App Store/TestFlight distribution; production release is outside the brief.
+
+## Stream lifecycle and privacy rules for later implementation
+
+These are proposed integration requirements, not implemented behavior:
+
+- Treat picker cancellation before capture as an ordinary return to idle. A picker cancellation while editing an existing selection is not automatically the same event as stopping its stream; probe both.
+- Apply updated system filters only to the intended active stream. Tag callbacks with a session generation so delayed output from a replaced stream cannot enter a new session.
+- On `stream(_:didStopWithError:)`, stop admitting frames and clear pending captured/encoded output. Apple's [userStopped guidance](https://developer.apple.com/documentation/screencapturekit/scstreamerror/code/userstopped) classifies an intentional user stop as normal interaction. Do not restart capture automatically after the person stops sharing; return to a user-initiated selection flow.
+- Report `missingBackgroundMode` as a capability/configuration problem rather than repeatedly restarting the same stream. Record other stop errors by domain/code and bounded sanitized context.
+- Do not map [streamDidBecomeActive](https://developer.apple.com/documentation/screencapturekit/scstreamdelegate/streamdidbecomeactive%28_%3A%29) or [streamDidBecomeInactive](https://developer.apple.com/documentation/screencapturekit/scstreamdelegate/streamdidbecomeinactive%28_%3A%29) to app foreground/background transitions: their documented discussion concerns shared windows closing/reopening.
+- Test lock/unlock, incoming system interruption, network loss, process termination and relaunch separately. Stop/purge decisions must prevent stale screen contents being retransmitted after authorization ends. The OS may blank or exclude protected content; no promise that every displayed pixel is capturable is made.
+- Keep screen pixels, recordings, map locations and destinations out of logs and fixtures (REQ-LOG-002). Full-display sharing can expose notifications and other apps, so the UI must explain its scope before system consent and show an explicit stop action.
+
+## CMSampleBuffer and VideoToolbox boundary
+
+[SCStreamFrameInfo](https://developer.apple.com/documentation/screencapturekit/scstreamframeinfo) exposes attachments and [SCFrameStatus](https://developer.apple.com/documentation/screencapturekit/scframestatus) derives status from them. Later processing must inspect validity, output type, attachments and image presence; distinguish complete frames from idle/blank/suspended/stopped events. Missing attachments are a probe finding to handle safely, not a reason to force-unwrap. Measure which metadata is actually populated on iOS.
+
+[CMSampleBufferGetImageBuffer](https://developer.apple.com/documentation/coremedia/cmsamplebuffergetimagebuffer%28_%3A%29) may return nil and does not transfer ownership. Keep a strong reference while handing frames to asynchronous work. Inspect the delivered pixel format, dimensions, planes, color attachments and orientation before choosing an encoder input. Do not assume the macOS-selectable `420f`/`420v` formats or zero-copy interoperability on iOS.
+
+[VTCompressionSessionCreate](https://developer.apple.com/documentation/videotoolbox/vtcompressionsessioncreate%28allocator%3Awidth%3Aheight%3Acodectype%3Aencoderspecification%3Aimagebufferattributes%3Acompresseddataallocator%3Aoutputcallback%3Arefcon%3Acompressionsessionout%3A%29) and [VTCompressionSessionEncodeFrame](https://developer.apple.com/documentation/videotoolbox/vtcompressionsessionencodeframe%28_%3Aimagebuffer%3Apresentationtimestamp%3Aduration%3Aframeproperties%3Asourceframerefcon%3Ainfoflagsout%3A%29) have iOS 8.0 introduction in the retrieved metadata. This makes them documented candidates on the requested target, not a guarantee of the required encoder/profile on every device.
+
+The encoder takes a `CVImageBuffer`, not an arbitrary captured sample buffer. Preserve increasing presentation timestamps per session. Encode completion can occur asynchronously on another thread; inspect both returned status and output callback status/drop flags. Do not modify submitted pixels; VideoToolbox retains them as required. Session creation fixes dimensions, and external pixel buffers can require a copy, so probe resize/rotation and recreate the session if the input contract changes. Use negotiated codec/profile/dimensions and packetization only after protocol research establishes them.
+
+[RealTime](https://developer.apple.com/documentation/videotoolbox/kvtcompressionpropertykey_realtime) recommends timely encoding rather than guaranteeing a latency deadline. [AllowFrameReordering](https://developer.apple.com/documentation/videotoolbox/kvtcompressionpropertykey_allowframereordering) can be set false to prevent reordering. [ExpectedFrameRate](https://developer.apple.com/documentation/videotoolbox/kvtcompressionpropertykey_expectedframerate) is an encoder hint and does not throttle capture. Check property-setting results. Use app-owned admission control and bounded in-flight buffers to drop stale work under pressure; do not grow a queue to hide a slow encoder/network. [Invalidate the session](https://developer.apple.com/documentation/videotoolbox/vtcompressionsessioninvalidate%28_%3A%29) deterministically during teardown, honoring Swift's ownership model rather than adding manual releases of imported managed objects.
+
+## Physical-device feasibility probe (planned; not executed)
+
+Prerequisites: Mac with the chosen Xcode/iOS 27+ SDK, signed development app, physical iPhone on iOS 27+, and a LAN receiver. Record the test commit, Xcode/SDK versions/builds, OS build, iPhone model, signing/capability configuration, app versions, and receiver revision. Use development installation first; distribution testing is a separate question.
+
+1. **SDK audit before code assumptions.** Record `xcodebuild -version` and `xcrun --sdk iphoneos --show-sdk-path`. Inspect `ScreenCaptureKit.framework/Headers` and exported Swift interfaces with `rg` for the picker, stream, configuration and lifecycle symbols above. Type-check a minimal transient declaration probe for arm64/iOS 27.0; check each needed member separately. Record compiler diagnostics for the five properties/modes without documented iOS declarations. Do not silently import macOS sample settings.
+2. **Consent-only run.** Build a minimal foreground probe using the system full-display picker, screen output and stop delegate, `NSScreenCaptureUsageDescription`, and `UIBackgroundModes = [screen-capture]`. No audio outputs/session, camera, recording or Photo Library feature. Test initial cancellation, approved full display, in-app selection as a negative control, picker failure, and a second start after stopping. Confirm no frames are emitted before selection and that in-app consent cannot satisfy cross-app capture.
+3. **Frames with navigation foreground.** Observe complete-frame counts and presentation timestamps; switch to Apple Maps and Waze separately for at least two minutes of changing map content. Observe the live stream in memory on the receiver using a safe test location; store only counters and event times. Test Google Maps separately if installed. Repeat with the `screen-capture` mode deliberately removed as a negative control and record exact resulting callbacks/errors. A short successful foreground run is not REQ-CAP-002 evidence.
+4. **Video-only encode/transport run.** Inspect actual buffer properties; feed a negotiated encoder when protocol dimensions/profile are known. Until then use a clearly labeled temporary receiver-only configuration, not a bike compatibility claim. Send to a LAN receiver and verify changing navigation content while the app remains backgrounded for 30 minutes per tested navigation app. Collect FPS, PTS gaps, encode latency, bytes, drops, maximum queue/in-flight depth, memory and thermal state. Test with the debugger detached. Declare exact achieved values; no FPS/latency threshold is inferred from the brief.
+5. **Interruption matrix.** Stop sharing from the system UI, cancel a picker update, lock/unlock, rotate, interrupt with a system alert/call, disconnect/reconnect Wi-Fi, and force-terminate/relaunch. For user stop, require no new frame admission or stale retransmission after the stop callback, orderly resource teardown, and fresh user action before restarting. Account explicitly for already sent data. For each other event, report callback order and observed recovery behavior rather than assuming consent survives.
+6. **Network integration.** Repeat on a no-internet bike-like Wi-Fi with cellular navigation available, using the networking research's persistent join candidate. Verify Wi-Fi-scoped video delivery, phone connectivity, and background heartbeat together. Capture success alone does not prove Wi-Fi session persistence or cellular coexistence. Actual 450NK projection remains a later hardware gate.
+
+Store a sanitized verification record identifying commit and environment, configuration, each case's result, measured values, deviations and failure diagnostics. Keep permission UI/content observations in a tester's local record; do not commit screen recordings. A result must explicitly say whether it proves raw capture, encoded receiver playback, or motorcycle projection.
+
+## Remaining questions and disposition
+
+| Question | Evidence needed / gate impact |
+|---|---|
+| Do installed SDK declarations match public DocC, including iOS configuration limitations and Swift concurrency annotations? | Header/interface audit and device-target compilation. Blocks capture implementation assumptions. |
+| What permission prompt, revocation control, repeat-start and relaunch rules apply on the selected iOS build? | Consent/interruption probe. REQ-CAP-001 remains unverified. |
+| Does video-only `screen-capture` keep sample callbacks, VideoToolbox and local transport operating with navigation foreground and debugger detached? | Physical-device 30-minute receiver run. REQ-CAP-002 remains unverified. |
+| What pixels/attachments are delivered during orientation changes, protected content, idle screens and lock? | Inspect sanitized metadata and live receiver output. Do not assume complete-display fidelity. |
+| Can capture buffers enter the chosen hardware encoder without costly conversion, and which codec settings succeed? | Device encoder status/performance measurements with negotiated parameters. REQ-VID-001 remains unverified. |
+| Does the integrated no-internet Wi-Fi/cellular path sustain the same behavior? | Combined network/capture probe, followed by 450NK hardware verification. REQ-TEST-003 remains unverified. |
+
+Disposition: proceed to SDK/device feasibility testing using the documented iOS 27 path after research review. Do not require a ReplayKit extension based on historical platform knowledge, and do not promote navigation mirroring to product support until the applicable gates pass.
+
+## Research validation
+
+Reviewed the research diff for unsupported platform/runtime claims, source attribution, explicit unknowns, ownership/teardown constraints, and the absence of implementation or product feature claims. The 42 metadata records parsed successfully and contain no failed retrieval entries. On this branch's foundation base `6ce2d027f096aed619440a8ac59630c5a4c8a8cc`, `python Tools/verify_repository.py` passed, all eight existing portable unit tests passed, and `git diff --check` passed after these research edits. `python Tools/verify_xcode.py` returned `UNVERIFIED: native checks require macOS and Xcode with an iOS 27+ SDK.` Native compilation, permission UI, device capture, encoder performance and motorcycle behavior remain unverified. Independent review is owned by the coordinator and is separate from this self-review.

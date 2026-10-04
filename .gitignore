@@ -1,0 +1,31 @@
+# Apple and Swift build products
+DerivedData/
+build/
+.build/
+.swiftpm/
+*.xcuserstate
+xcuserdata/
+*.ipa
+*.dSYM/
+.DS_Store
+
+# Isolated agent worktrees and downloaded research material
+.worktrees/
+.research/
+
+# Local settings, secrets and sensitive captures
+.env
+.env.*
+*.mobileprovision
+*.p12
+local.credentials*
+diagnostic-captures/
+screen-recordings/
+Tools/DashSimulator/recordings/
+
+# Python / local tooling
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+

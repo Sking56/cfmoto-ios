@@ -1,6 +1,6 @@
 # System architecture
 
-MVP-007, 2026-10-04. Specification based on reviewed Gate 0 research on `main` at `cd5d9a47aada71f211b0d8f73eff180dd89f87e5`. Architecture independently approved for the synthetic Gate 1 scope at `fde4c817ce75514d973f00820e21498f35ade4b6`; see [review/evidence](verification/GATE_1_HARDENING.md). Gate 2 video additions are under review. Future capture/network adapters remain implementation plans, not established device compatibility.
+MVP-007, 2026-10-04. Specification based on reviewed Gate 0 research on `main` at `cd5d9a47aada71f211b0d8f73eff180dd89f87e5`. Architecture independently approved for the synthetic Gate 1 scope at `fde4c817ce75514d973f00820e21498f35ade4b6`; see [historical review/evidence](verification/GATE_1_HARDENING.md). Gate 2 video additions independently approved/verified at 603be12; [current evidence/test gaps](verification/GATE_2_HOST.md). Future capture/network adapters remain implementation plans, not established device compatibility.
 
 ## Ownership and boundaries
 

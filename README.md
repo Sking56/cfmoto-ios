@@ -4,7 +4,7 @@ Research-stage native iOS proof of concept for mirroring an iPhone onto the CFMo
 
 The controlling brief is [CFMoto_IOS_MVP_V1.md](CFMoto_IOS_MVP_V1.md). Start with [engineering status](docs/engineering/STATUS.md), [task tracking](docs/engineering/MVP_TASKS.md), and [product limitations](docs/product/LIMITATIONS.md).
 
-The application UI remains a SwiftUI launch skeleton. An independently reviewed/tested Swift QR/protocol/negotiation core and a synthetic Python dashboard peer are integrated on local `main`. Gate 2 now adds actual synthetic H.264 encoding and independent receiver decode on its development branch, pending final review/verification. Camera pairing, production phone networking, screen capture and TFT projection are not integrated or verified. No hardware compatibility is claimed.
+The application UI remains a SwiftUI launch skeleton. The Swift QR/protocol/negotiation core and synthetic Python dashboard peer are independently reviewed/tested. Gate 2 adds actual synthetic H.264 encoding and independent receiver decode, approved at `603be12`; [evidence](docs/engineering/verification/GATE_2_HOST.md). Camera pairing, production phone networking, screen capture and TFT projection are not integrated or verified. No hardware compatibility is claimed.
 
 ## Development
 
@@ -23,4 +23,4 @@ CI is configured in `.github/workflows/ci.yml`. Committed history, four research
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
 
-Reviewed research and the independently verified Gate 1 protocol core are integrated; the local checkpoint is `mvp-gate-1`. Clean host/portable and native simulator build/analyze/launch checks pass with Xcode 27; [verification record](docs/engineering/verification/GATE_1_HARDENING.md). Gate 2 encoded synthetic projection is under independent review; no new milestone is claimed yet. These changes are not uploaded; signed-device and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).
+Reviewed research and the independently verified Gate 1 protocol core are integrated; the local checkpoint is `mvp-gate-1`. Gate 2 encoded synthetic projection passed independent clean host/portable/native checks with Xcode 27 and is approved for integration. The new local milestone follows final integration/checkpoint verification. These changes are not uploaded; signed-device and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).

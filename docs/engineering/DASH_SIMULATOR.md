@@ -1,6 +1,6 @@
 # Dash Simulator specification
 
-MVP-007/MVP-009 specification, 2026-10-04; independently approved for synthetic Gate 1 at fde4c81. REQ-TEST-001. The Python peer uses the standard library and reviewed wire specification, without importing fixture generators, research-test parsers or Swift code. Gate 2 media additions are under independent review; [Gate 1 evidence](verification/GATE_1_HARDENING.md) remains historical.
+MVP-007/MVP-009 specification, 2026-10-04; synthetic Gate 2 additions independently approved/verified at 603be12. REQ-TEST-001. The Python peer uses the standard library and reviewed wire specification, without importing fixture generators, research-test parsers or Swift code. [Current evidence/test gaps](verification/GATE_2_HOST.md); [Gate 1 evidence](verification/GATE_1_HARDENING.md) remains historical.
 
 The dashboard listens for phone wake (default 10930). After a parsed acceptable wake, it initiates two phone PXC connections (10922), one media-control connection (10921) and one media-data connection (10920). Allow explicit host/port overrides so tests can use loopback and isolated ports. Default development binding is loopback; LAN binding requires explicit configuration. The Swift host peer prepares listeners before wake. This corrects the generic earlier notion of a receiver merely waiting for unsolicited video.
 

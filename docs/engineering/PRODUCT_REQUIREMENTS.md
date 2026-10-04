@@ -12,12 +12,12 @@ Source: CFMoto_IOS_MVP_V1.md; iOS 27+, Swift/SwiftUI, physical iPhone, CFMoto 45
 | REQ-PROJ-005 | Transmit captured display frames to an established session | Pending hardware |
 | REQ-CAP-001 | Obtain explicit full-display capture consent | Pending |
 | REQ-CAP-002 | Continue capture when navigation app becomes foreground | Pending physical iPhone |
-| REQ-VID-001 | Encode negotiated video without unnecessary compositing | OpenCFMoto/Video synthetic source/H264Encoder/AnnexB/FrameQueue implemented; working host decode and native compile checks PASS; independent Gate2 approval pending; real capture/device behavior pending |
+| REQ-VID-001 | Encode negotiated video without unnecessary compositing | OpenCFMoto/Video synthetic source/H264Encoder/AnnexB/FrameQueue; 7 video tests and receiver decode/native compile independently PASS on 603be12; [evidence](verification/GATE_2_HOST.md); real capture/device behavior pending |
 | REQ-REC-001 | Handle interruptions and bounded reconnect without crash | Pending |
 | REQ-LOG-001 | Report FPS, bitrate, drops, queue, reconnects, duration and thermal state | Pending |
 | REQ-LOG-002 | Exclude secrets, screen content, destinations and tokens from diagnostics | Pending |
-| REQ-TEST-001 | Test protocol behavior independently using Dash Simulator | Tools/DashSimulator/dash_simulator.py and Tools/verify_gate1.py; 14 host socket cases pass on fde4c81; [evidence](verification/GATE_1_HARDENING.md); verify_gate2.py and independent VideoInspector add real synthetic decode, under review; device integration pending |
-| REQ-TEST-002 | Verify fresh-checkout build and automated tests | Portable/host and native simulator build/analyze/launch independently PASS on fde4c81 with Xcode 27; static review approved; [evidence](verification/GATE_1_HARDENING.md); signed-device pending |
+| REQ-TEST-001 | Test protocol behavior independently using Dash Simulator | Tools/DashSimulator/dash_simulator.py, verify_gate2.py and VideoInspector; 14 legacy sockets, 2 decoded-video cases and 4 inspector rejects independently PASS on 603be12; [evidence](verification/GATE_2_HOST.md); device integration pending |
+| REQ-TEST-002 | Verify fresh-checkout build and automated tests | Portable/host and native simulator build/analyze/launch independently PASS on 603be12 with Xcode 27; static review approved; [evidence](verification/GATE_2_HOST.md); signed-device pending |
 | REQ-TEST-003 | Sustain full projection for at least 30 minutes | Pending hardware |
 | REQ-DOC-001 | Maintain research, requirements, architecture, decisions and evidence | Foundation documentation |
 | REQ-DOC-002 | Advertise only verified product behavior | Research-stage product documents |

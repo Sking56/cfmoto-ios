@@ -1,6 +1,6 @@
 # Test architecture
 
-MVP-007/MVP-009 specification, 2026-10-04; independently approved for synthetic Gate 1 at fde4c81. REQ-TEST-001, REQ-TEST-002. Keep research fixtures, Swift behavior and the independent peer distinct. Gate 2 additions are under review; physical layers remain unverified. [Gate 1 evidence](verification/GATE_1_HARDENING.md) remains historical.
+MVP-007/MVP-009 specification, 2026-10-04; synthetic Gate 2 additions independently approved/verified at 603be12. REQ-TEST-001, REQ-TEST-002. Keep research fixtures, Swift behavior and the independent peer distinct. Physical layers remain unverified; [current evidence/test gaps](verification/GATE_2_HOST.md). [Gate 1 evidence](verification/GATE_1_HARDENING.md) remains historical.
 
 ## Layers
 

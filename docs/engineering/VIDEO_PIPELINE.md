@@ -1,6 +1,6 @@
 # Video pipeline
 
-MVP-007/MVP-009, 2026-10-04. REQ-VID-001, REQ-PROJ-005. Gate 2 synthetic implementation is under independent review; capture and hardware projection remain unimplemented/unverified.
+MVP-007/MVP-009, 2026-10-04. REQ-VID-001, REQ-PROJ-005. Gate 2 synthetic implementation is independently approved/verified at 603be12; [evidence and remaining test gaps](verification/GATE_2_HOST.md). Capture and hardware projection remain unimplemented/unverified.
 
 `ScreenFrameSource -> geometry/format conversion -> VideoToolbox H.264 -> Annex-B access unit -> bounded queue -> DATA_NEXT response`
 

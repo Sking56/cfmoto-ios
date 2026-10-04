@@ -21,4 +21,3 @@ The first two commands are portable foundation checks. The third requires macOS,
 CI is configured locally in `.github/workflows/ci.yml`; no remote repository or hosted CI run is currently established. The [engineering index](docs/engineering/README.md) describes research and verification records. The [product index](docs/product/README.md) describes what a tester can currently do.
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
-

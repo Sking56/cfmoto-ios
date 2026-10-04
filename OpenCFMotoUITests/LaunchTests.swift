@@ -9,4 +9,3 @@ final class LaunchTests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Pairing and mirroring are not available yet."].exists)
     }
 }
-

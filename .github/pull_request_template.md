@@ -9,4 +9,3 @@
 ## Independent review
 
 ## Known limitations and pending hardware checks
-

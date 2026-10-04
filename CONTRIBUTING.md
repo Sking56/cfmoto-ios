@@ -9,4 +9,3 @@ Every completed task records requirements, dependencies, branch, owner, acceptan
 Promote capabilities into product features only after verification, including physical hardware checks where needed. Preserve meaningful research history; do not rewrite shared history or force push. Never commit credentials, real pairing passwords, recordings, or private diagnostics. Fixtures must be synthetic or explicitly sanitized and have provenance.
 
 Before completion, run relevant checks, update status and tasks, inspect the diff, and commit coherent work. Licensing is pending: record upstream references and reuse decisions before importing code or dependencies. There is no contributor license grant or dual-license policy yet.
-

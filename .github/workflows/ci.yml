@@ -22,4 +22,3 @@ jobs:
         with:
           python-version: '3.14'
       - run: python Tools/verify_xcode.py
-

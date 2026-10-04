@@ -1,6 +1,6 @@
 # Video pipeline
 
-MVP-007 candidate specification, 2026-10-04; independent review pending. REQ-VID-001, REQ-PROJ-005. No encoder/capture implementation is verified yet.
+MVP-007/MVP-009, 2026-10-04. REQ-VID-001, REQ-PROJ-005. Gate 2 synthetic implementation is under independent review; capture and hardware projection remain unimplemented/unverified.
 
 `ScreenFrameSource -> geometry/format conversion -> VideoToolbox H.264 -> Annex-B access unit -> bounded queue -> DATA_NEXT response`
 
@@ -14,4 +14,14 @@ DATA_START clears encoded output and waits for fresh IDR. DATA_NEXT consumes at 
 
 Use bounded encoder in-flight ownership and a small bounded encoded queue. When overload drops predictive output, clear the remaining chain, force IDR and discard dependent frames until recovery; simply dropping the oldest P-frame is insufficient. Stop/generation changes purge all units. Reset or recreate encoding on dimensions/orientation changes according to actual delivered metadata and negotiation.
 
-Gate 2 must prove decoding of actual synthetic access units, SPS/PPS/IDR startup, no stale generations, backpressure and pull-only delivery. The existing framing-only fixture is non-decodable and cannot serve as HELLO 450NK. Raw-video trailer acceptance, physical encoder performance, thermal behavior, protected content and 30-minute projection remain open.
+## Synthetic Implementation
+
+`OpenCFMoto/Video/SyntheticFrameSource.swift` owns an 800x384 BGRA test image with three color bars and a moving marker. `H264Encoder.swift` checks session creation/properties/submission/flush/output and uses Baseline 3.1, 2.5 Mbps, negotiated FPS and no reordering. This is an on-demand, single-in-flight, synchronously flushed prototype, not an asynchronous capture pipeline or a sustained 30 FPS result. Any submission, flush or output failure invalidates the encoder; it cannot resume a possibly broken predictive chain. Deterministic injected-failure tests cover this terminal policy.
+
+`AnnexB.swift` validates 1/2/4-byte length prefixes, NAL bounds and forbidden bits, prepends SPS/PPS to IDR and caps each resulting access unit at 1 MiB. `FrameQueue.swift` defaults to three frames/1 MiB. Count/byte overflow clears the entire predictive chain and waits for a fresh keyframe. Stop/start changes purge output; stale-generation admission is ignored. These queue failure cases are deterministic unit tests, not claims of naturally occurring Network.framework congestion in this on-demand probe.
+
+`Tools/ProtocolHarness/HostProbe.swift` lazily creates the source/encoder after negotiated readiness and DATA_START. Each DATA_NEXT encodes and pulls at most one frame, with no unsolicited raw output. Repeated DATA_START requires an empty media writer, starts a new queue generation and forces IDR. A changed active capture configuration is explicitly rejected. The media writer admits at most four writes/1 MiB plus the four-byte raw header, including in-flight output. The test exits only after twelve writes drain; it is not a production session/Stop watchdog.
+
+The Python dashboard collects at most twelve bounded raw units in memory and invokes `Tools/VideoInspector/main.swift` in a separate process. That executable has no encoder/core dependency and independently parses framing/NALs, constructs the decoding format and decodes through VideoToolbox. Checks require dimensions, RGB samples, marker movement, Baseline 3.1 and startup/restart SPS/PPS/IDR. Both ends share Apple's codec engine, so this is independent parser/receiver evidence, not cross-codec or firmware interoperability. No screen/video files are saved by default.
+
+The old framing-only fixture remains non-decodable and is not used as the video proof or HELLO 450NK. Raw-video trailer acceptance, production capture ownership/async backpressure, physical encoder performance, thermal behavior, protected content and 30-minute projection remain open.

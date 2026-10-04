@@ -32,7 +32,7 @@ def validate(root: Path) -> list[str]:
         for relative in re.findall(r"path = ([^;]+\.swift);", project):
             if not (root / relative.strip('"')).is_file():
                 errors.append(f"Missing Xcode Swift source: {relative}")
-        for folder in ["Pairing", "EasyConnect"]:
+        for folder in ["Pairing", "EasyConnect", "Video"]:
             for source in (root / "OpenCFMoto" / folder).rglob("*.swift"):
                 if f"path = {source.relative_to(root).as_posix()};" not in project:
                     errors.append(f"Core Swift source missing from Xcode project: {source.relative_to(root)}")

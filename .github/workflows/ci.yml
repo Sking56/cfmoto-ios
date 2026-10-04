@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.14'
-      - run: python Tools/verify_gate1.py
+      - run: python Tools/verify_gate2.py
   xcode:
     runs-on: macos-latest
     timeout-minutes: 30

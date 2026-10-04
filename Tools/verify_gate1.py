@@ -78,7 +78,7 @@ def main():
                               ("unknown-command", 3), ("duplicate-channel", 3), ("duplicate-media", 3),
                               ("missing-channel", 3), ("early-start", 3), ("early-pull", 3), ("disconnect", 3)]:
         integration_case(binary, fault, chunk_size)
-    print("PASS: host protocol checks only; native iOS, RSA, capture, video and TFT remain unverified.")
+    print("PASS: legacy host protocol checks; this command does not verify native iOS, RSA, capture, received video or TFT.")
     return 0
 
 

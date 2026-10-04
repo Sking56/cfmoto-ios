@@ -4,7 +4,7 @@ Research-stage native iOS proof of concept for mirroring an iPhone onto the CFMo
 
 The controlling brief is [CFMoto_IOS_MVP_V1.md](CFMoto_IOS_MVP_V1.md). Start with [engineering status](docs/engineering/STATUS.md), [task tracking](docs/engineering/MVP_TASKS.md), and [product limitations](docs/product/LIMITATIONS.md).
 
-The application UI remains a SwiftUI launch skeleton. A host-tested Swift QR/protocol/negotiation core and an independent synthetic Python dashboard peer are now implemented on the development branch. Camera pairing, phone networking, capture, encoding and projection are not integrated or verified. No hardware compatibility is claimed.
+The application UI remains a SwiftUI launch skeleton. An independently reviewed/tested Swift QR/protocol/negotiation core and a synthetic Python dashboard peer are now integrated on local `main`. Camera pairing, phone networking, capture, encoding and projection are not integrated or verified. No hardware compatibility is claimed.
 
 ## Development
 
@@ -23,4 +23,4 @@ CI is configured in `.github/workflows/ci.yml`. Committed history, four research
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
 
-Reviewed research and synthetic fixture checks are committed. The Mac work adds independently reviewed Gate 1 architecture/core and bounded protocol replies. Clean host/portable and native simulator build/analyze/launch checks independently pass with Xcode 27; [verification record](docs/engineering/verification/GATE_1_HARDENING.md). Integration is next; signed-device and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).
+Reviewed research and the independently verified Gate 1 protocol core are integrated; the local checkpoint is `mvp-gate-1`. Clean host/portable and native simulator build/analyze/launch checks pass with Xcode 27; [verification record](docs/engineering/verification/GATE_1_HARDENING.md). Gate 2 encoded synthetic projection is next. These new changes are not uploaded; signed-device and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).

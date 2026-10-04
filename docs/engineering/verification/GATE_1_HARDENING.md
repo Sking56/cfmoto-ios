@@ -33,4 +33,10 @@ Independent verifier disposition: PASS, approve the synthetic protocol-core Gate
 
 Independent native evidence was preserved in the primary checkout as `build/independent-native-fde4c81.log` and `build/LaunchTests-20261004T215642163358Z.xcresult` before removing the temporary checkout. The same AppIntents/simulator/debugger notices occurred, with no source compiler/analyzer errors or failed tests. There is no remaining independent verification blocker for this Gate 1 scope. Integration/milestone state is tracked in [STATUS](../STATUS.md); no remote publication is authorized or claimed.
 
+## Integration Checkpoint
+
+Review/evidence documentation was committed at `155dc22`; the branch merged without conflicts to `main` at `18b771d7ab01e93d7b68202854ebfdd20b586baf`. The final follow-up records that merge and updates task/handoff status; it changes documentation only. The annotated local `mvp-gate-1` tag identifies the exact final checkpoint, and is created only after its own fresh-checkout portable, Swift/socket and native checks pass. Its annotation records the checkpoint verification and source-review SHA. No tag or branch is uploaded by this session.
+
+This milestone certifies only the brief's Gate 1 protocol encoder/decoder, state, fixtures, unit tests and synthetic simulator handshake. The one P3 adapter-callback ordering test remains tracked before Gate 2 media work. It is not a mirroring release or proof of hardware compatibility.
+
 The queue limits (64 writes/256 KiB per connection) are defensive control-path limits, not firmware/video limits. Network completion does not prove receiver consumption. The probe still uses invented identity, sends no video, exits after an empty pull, and is not production iPhone transport. Hardware identity/RSA, periodic outbound liveness/recovery, physical signing/association/cellular routing, capture/background lifetime, encoded video and TFT/restoration/endurance remain unverified or unimplemented as applicable. No verified product behavior changes.

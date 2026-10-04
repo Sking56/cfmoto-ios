@@ -23,4 +23,4 @@ CI is configured in `.github/workflows/ci.yml`. Committed history, four research
 
 Licensing is undecided for this new repository; see [LICENSE](LICENSE). Reference research must preserve upstream provenance and must not silently copy code.
 
-Reviewed research and synthetic fixture checks are committed. The resumed Mac work adds candidate architecture and the first Gate 1 core/simulator checks; review, native and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).
+Reviewed research and synthetic fixture checks are committed. The resumed Mac work adds candidate architecture and the first Gate 1 core/simulator checks. Native simulator build, analysis and skeleton launch now pass with Xcode 27; [verification record](docs/engineering/verification/NATIVE_XCODE_27.md). Independent review, signed-device and hardware evidence remain pending. Follow the [Mac handoff guide](docs/engineering/MAC_HANDOFF.md) and [current status](docs/engineering/STATUS.md).

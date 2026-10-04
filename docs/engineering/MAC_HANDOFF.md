@@ -49,7 +49,7 @@ For physical-device installation choose your own development team and unique bun
 
 ## Resume the staged development
 
-The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). Xcode 16.2/iOS 18.2 cannot run the required native checks. The dependency-free core can be tested using Swift 6 and Python 3.10+ with `python3 Tools/verify_gate1.py`; the candidate architecture and host protocol implementation are tracked in [STATUS.md](STATUS.md). The default Python 3.8 on that Mac is unsuitable; a bundled Python 3.12 was used. Keep native/capture gates pending until a matching iOS 27 SDK/runtime and physical device are available.
+The first Mac continuation is recorded in [MAC_BASELINE.md](verification/MAC_BASELINE.md). The user subsequently upgraded to Xcode 27/iOS 27; native simulator build, analysis and launch now pass from a clean checkout, as recorded in [NATIVE_XCODE_27.md](verification/NATIVE_XCODE_27.md). The dependency-free core also passes under Swift 6.4 with `python3 Tools/verify_gate1.py`. Use Python 3.10+; a bundled Python 3.12 was used. Candidate architecture/core review, physical signing, capture and hardware gates remain pending; see [STATUS.md](STATUS.md).
 
 Follow the brief's startup procedure. Check the research gate's recorded disposition and consume the reviewed research on `main`. The new architecture documents are candidate specifications and still require independent review.
 
